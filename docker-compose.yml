@@ -7,10 +7,10 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: makersite
-    #volume: where you're going to store the actual database info on the host
+    volumes:
+      - ..\storage\docker\makersite-mysql-data:/var/lib/mysql
     ports:
       - 3308:3306
-      # host:container
   web_app:
     build: .
     volumes:

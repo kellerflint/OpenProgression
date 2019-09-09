@@ -15,15 +15,18 @@
     <h1>
         <?php 
 
-        define("DB_SERVER", "172.19.0.2");
+        // Remember that in docker, the service name can be used for the ip on the virtual network
+        define("DB_SERVER", "database");
         define("DB_USER", "root");
         define("DB_PASS", "password");
         define("DB_NAME", "makersite");
 
         $db = db_connect();
-        $id = 1;
+        $id = 2;
         $query = "SELECT * FROM Test WHERE test_id = ?";
         $stmt = $db->prepare($query);
+        // You should have something checking if the prepare method returned false before attempting to bind. 
+        // That's what the boolean bind error is about
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $set = $stmt->get_result();
