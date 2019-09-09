@@ -1,0 +1,19 @@
+version: '3'
+services:
+  database:
+    image: mysql:8.0.17
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: makersite
+    #volume: where you're going to store the actual database info on the host
+    ports:
+      - 3308:3306
+      # host:container
+  web_app:
+    build: .
+    volumes:
+      - ./app:/var/www/html
+    ports:
+      - 5001:80
+    depends_on:
+      - database
