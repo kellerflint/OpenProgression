@@ -1,4 +1,4 @@
-to build from the docker file: 
+to build image from the docker file: 
     docker build -t kellerflint/php7.2-apache .
 
 to run the docker container (for development):
