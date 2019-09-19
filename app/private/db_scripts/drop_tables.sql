@@ -1,0 +1,9 @@
+DROP TABLE User_Req;
+DROP TABLE Req;
+DROP TABLE User_Badge;
+DROP TABLE Badge;
+DROP TABLE Rank_Table;
+DROP TABLE Category;
+DROP TABLE User_Session;
+DROP TABLE Session;
+DROP TABLE User;
