@@ -14,7 +14,7 @@ services:
   web_app:
     build: .
     volumes:
-      - ./app:/var/www/html
+      - ./app:/var/www/
     ports:
       - 5001:80
     depends_on:

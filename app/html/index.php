@@ -1,5 +1,5 @@
-<?php require_once 'private/initialize.php' ?>
-<?php include_once 'private/shared/default_header.php'; ?>
+<?php require_once '../private/initialize.php'; ?>
+<?php include_once '../private/shared/default_header.php'; ?>
 
 <?php
 $db = db_connect();
@@ -18,4 +18,4 @@ while ($item = mysqli_fetch_assoc($set)) {
 }
 ?>
 
-<?php include_once 'private/shared/default_footer.php'; ?>
+<?php include_once '../private/shared/default_footer.php'; ?>
