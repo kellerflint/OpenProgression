@@ -3,8 +3,8 @@
 
 <?php
 $db = db_connect();
-$id = 2;
-$query = "SELECT * FROM Test WHERE test_id = ?";
+$id = 1;
+$query = "SELECT * FROM User WHERE user_id = ?";
 $stmt = $db->prepare($query);
 // You should have something checking if the prepare method returned false before attempting to bind. 
 // That's what the boolean bind error is about
@@ -14,7 +14,7 @@ $set = $stmt->get_result();
 $stmt->close();
 
 while ($item = mysqli_fetch_assoc($set)) {
-    echo $item['test_output'];
+    echo $item['user_name'];
 }
 ?>
 
