@@ -12,5 +12,6 @@
         <nav>
             <ul>
                 <li><a href="<?php echo url_for('/'); ?>">Login</a></li>
+                <li><a href="<?php echo url_for('/user/badges.php'); ?>">Badges</a></li>
             </ul>
         </nav>

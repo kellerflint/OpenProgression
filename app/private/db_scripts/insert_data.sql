@@ -37,6 +37,14 @@ INSERT INTO `makersite`.`Badge` (`badge_id`, `badge_name`, `badge_description`, 
 INSERT INTO `makersite`.`Badge` (`badge_id`, `badge_name`, `badge_description`, `category_id`, `badge_experience`, `badge_order`) VALUES ('9', 'Web Dev 3', 'things', '3', '10', '3');
 INSERT INTO `makersite`.`Badge` (`badge_id`, `badge_name`, `badge_description`, `category_id`, `badge_experience`, `badge_order`) VALUES ('10', 'Games 1', 'things', '4', '10', '1');
 
+/* Set Badge Prereqs */
+UPDATE `makersite`.`Badge` SET `badge_prereq_id` = '1' WHERE (`badge_id` = '2');
+UPDATE `makersite`.`Badge` SET `badge_prereq_id` = '2' WHERE (`badge_id` = '3');
+UPDATE `makersite`.`Badge` SET `badge_prereq_id` = '4' WHERE (`badge_id` = '5');
+UPDATE `makersite`.`Badge` SET `badge_prereq_id` = '5' WHERE (`badge_id` = '6');
+UPDATE `makersite`.`Badge` SET `badge_prereq_id` = '7' WHERE (`badge_id` = '8');
+UPDATE `makersite`.`Badge` SET `badge_prereq_id` = '8' WHERE (`badge_id` = '9');
+
 /* Give Badges to Users */
 INSERT INTO `makersite`.`User_Badge` (`user_id`, `badge_id`, `user_badge_date`) VALUES ('1', '1', '2007-04-30 13:10:02.047');
 INSERT INTO `makersite`.`User_Badge` (`user_id`, `badge_id`, `user_badge_date`) VALUES ('2', '1', '2007-04-30 13:10:02.047');
@@ -61,3 +69,4 @@ INSERT INTO `makersite`.`User_Req` (`user_id`, `req_id`, `user_badge_date`) VALU
 INSERT INTO `makersite`.`User_Req` (`user_id`, `req_id`, `user_badge_date`) VALUES ('1', '3', '2007-04-30 13:10:02.047');
 INSERT INTO `makersite`.`User_Req` (`user_id`, `req_id`, `user_badge_date`) VALUES ('1', '4', '2007-04-30 13:10:02.047');
 INSERT INTO `makersite`.`User_Req` (`user_id`, `req_id`, `user_badge_date`) VALUES ('1', '5', '2007-04-30 13:10:02.047');
+

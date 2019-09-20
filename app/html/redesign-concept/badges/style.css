@@ -1,0 +1,252 @@
+body {
+    min-height: 1000px;
+    margin: 0px;
+    background-color: whitesmoke;
+    text-align: center;
+}
+
+nav {
+    margin: 0px;
+    height: 50px;
+    width: 100%;
+    background-color: black;
+}
+
+.rank-div {
+    margin-top: 20px;
+    width: 100%;
+    height: 150px;
+}
+
+.rank-image {
+    width: 300px;
+    animation: rank-float 6s linear infinite;
+}
+
+#progress {
+    display: block;
+    margin-top: 20px;
+    margin-left: 30%;
+    width: 40%;
+    background-color: #ddd;
+    border-radius: 20px;
+    animation: glow_dark 8s linear infinite;
+}
+
+#bar {
+    width: 0%;
+    height: 20px;
+    background-color: darkgreen;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    border-radius: 20px;
+    animation: glow_gold 6s linear infinite;
+}
+
+#category-menu {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.category {
+    width: 200px;
+    display: inline-block;
+    font-size: 2.5em;
+    text-shadow: 0 1px 0 #999999, 0 4px 1px rgba(0,0,0,0.1), 2px 5px 1px rgba(0,0,0,0.05), -2px 5px 1px rgba(0,0,0,0.05);
+    border: 2px solid black;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: lightgrey;
+}
+
+.category:hover {
+    background-color: grey;
+}
+
+.category-selected {
+    border-bottom: none;
+    background-color: whitesmoke;
+}
+
+#badges {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.badge {
+    display: inline-block;
+    vertical-align: center;
+    width: 250px;
+}
+
+.inactive {
+    height: 250px;
+    animation: float 8s linear infinite;
+}
+
+.inactive:hover {
+    animation: excited .4s linear infinite;
+}
+
+.badge-title {
+    margin-top: 0px;
+    transform: translateY(-10px);
+}
+
+.missing > img, .missing > h2 {
+    opacity: .75;
+    filter: grayscale(100%);
+}
+
+.locked {
+    opacity: .35;
+    filter: grayscale(100%);
+}
+
+h3 {
+    display: inline-block;
+}
+
+.reqs {
+    display: none;
+}
+
+.req {
+    text-align: left;
+}
+
+.mark {
+    vertical-align: middle;
+    width: 25px;
+    margin-right: 5px;
+}
+
+.mark-true {
+    opacity: .75;
+}
+
+.strike {
+    text-decoration: line-through;
+    opacity: .5;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: inline-block;
+    vertical-align: top;
+    animation: show .1s linear;
+}
+
+/* keyframes */
+
+@keyframes glow_gold {
+    0% { 
+        box-shadow: 0 0 5px #c4a300; 
+    }
+    40% { 
+        box-shadow: 0 0 40px #c4a300; 
+    }
+    60% { 
+        box-shadow: 0 0 40px #c4a300; 
+    }
+    100% { 
+        box-shadow: 0 0 5px #c4a300; 
+    }
+}
+
+@keyframes glow_dark {
+    0% { 
+        box-shadow: 0 0 5px #241e00; 
+    }
+    40% { 
+        box-shadow: 0 0 10px #241e00; 
+    }
+    60% { 
+        box-shadow: 0 0 10px #241e00; 
+    }
+    100% { 
+        box-shadow: 0 0 5px #241e00; 
+    }
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+        transform: translateY(-200px) scale(0);
+    }
+
+    100% {
+        transform: translateY(0px) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotateZ(0deg);
+    }
+
+    25% {
+        transform: translateY(4px) rotateZ(1deg);
+    }
+
+    50% {
+        transform: translateY(8px) rotateZ(0deg);
+    }
+
+    75% {
+        transform: translateY(4px) rotateZ(-1deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotateZ(0deg);
+    }
+}
+
+@keyframes excited {
+    0% {
+        transform: translateY(0px) rotateZ(0deg);
+    }
+
+    25% {
+        transform: translateY(4px) rotateZ(3deg);
+    }
+
+    50% {
+        transform: translateY(8px) rotateZ(0deg);
+    }
+
+    75% {
+        transform: translateY(4px) rotateZ(-3deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotateZ(0deg);
+    }
+}
+
+@keyframes rank-float {
+    0% {
+        transform: scale(1.0) rotateZ(0deg);
+    }
+
+    25% {
+        transform: scale(1.02) rotateZ(-.5deg);
+    }
+
+    50% {
+        transform: scale(1.04) rotateZ(0deg);
+    }
+
+    75% {
+        transform: scale(1.02) rotateZ(.5deg);
+    }
+
+    100% {
+        transform: scale(1.0) rotateZ(0deg);
+    }
+}

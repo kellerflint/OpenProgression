@@ -1,0 +1,232 @@
+{
+    "badges": [
+        {
+            "title": "Test One",
+            "category": "scratch",
+            "path": "badge.png",
+            "missing": "true",
+            "locked": "false",
+            "prereq": "",
+            "reqs": [
+                [
+                    "req1 text",
+                    "true"
+                ],
+                [
+                    "req2 text",
+                    "true"
+                ],
+                [
+                    "req3 text",
+                    "false"
+                ],
+                [
+                    "req4 text",
+                    "false"
+                ],
+                [
+                    "req5 text",
+                    "false"
+                ],
+                [
+                    "req6 text",
+                    "false"
+                ],
+                [
+                    "req7 text",
+                    "false"
+                ]
+            ]
+        },
+        {
+            "title": "Python One",
+            "category": "python",
+            "path": "badge.png",
+            "missing": "true",
+            "locked": "false",
+            "prereq": "",
+            "reqs": [
+                [
+                    "req1 text",
+                    "true"
+                ],
+                [
+                    "req2 text",
+                    "true"
+                ],
+                [
+                    "req3 text",
+                    "false"
+                ],
+                [
+                    "req4 text",
+                    "false"
+                ],
+                [
+                    "req5 text",
+                    "false"
+                ],
+                [
+                    "req6 text",
+                    "false"
+                ],
+                [
+                    "req7 text",
+                    "false"
+                ]
+            ]
+        },
+        {
+            "title": "Unity One",
+            "category": "unity",
+            "path": "badge.png",
+            "missing": "true",
+            "locked": "false",
+            "prereq": "",
+            "reqs": [
+                [
+                    "req1 text",
+                    "true"
+                ],
+                [
+                    "req2 text",
+                    "true"
+                ],
+                [
+                    "req3 text",
+                    "false"
+                ],
+                [
+                    "req4 text",
+                    "false"
+                ],
+                [
+                    "req5 text",
+                    "false"
+                ],
+                [
+                    "req6 text",
+                    "false"
+                ],
+                [
+                    "req7 text",
+                    "false"
+                ]
+            ]
+        },
+        {
+            "title": "Test One",
+            "category": "scratch",
+            "path": "badge.png",
+            "missing": "false",
+            "locked": "false",
+            "prereq": "",
+            "reqs": [
+                [
+                    "req1 text",
+                    "true"
+                ],
+                [
+                    "req2 text",
+                    "true"
+                ],
+                [
+                    "req3 text",
+                    "true"
+                ],
+                [
+                    "req4 text",
+                    "true"
+                ],
+                [
+                    "req5 text",
+                    "true"
+                ],
+                [
+                    "req6 text",
+                    "true"
+                ],
+                [
+                    "req7 text",
+                    "true"
+                ]
+            ]
+        },
+        {
+            "title": "Test One",
+            "category": "scratch",
+            "path": "badge.png",
+            "missing": "true",
+            "locked": "false",
+            "prereq": "",
+            "reqs": [
+                [
+                    "req1 text",
+                    "true"
+                ],
+                [
+                    "req2 text",
+                    "true"
+                ],
+                [
+                    "req3 text",
+                    "false"
+                ],
+                [
+                    "req4 text",
+                    "false"
+                ],
+                [
+                    "req5 text",
+                    "false"
+                ],
+                [
+                    "req6 text",
+                    "false"
+                ],
+                [
+                    "req7 text",
+                    "false"
+                ]
+            ]
+        },
+        {
+            "title": "Badge Two",
+            "category": "scratch",
+            "path": "badge.png",
+            "missing": "true",
+            "locked": "true",
+            "prereq": "Test One",
+            "reqs": [
+                [
+                    "CS First Storytelling",
+                    "false"
+                ],
+                [
+                    "CS First Game Design",
+                    "false"
+                ],
+                [
+                    "CS First Art",
+                    "false"
+                ],
+                [
+                    "req4 text",
+                    "false"
+                ],
+                [
+                    "req5 text",
+                    "false"
+                ],
+                [
+                    "req6 text",
+                    "false"
+                ],
+                [
+                    "req7 text",
+                    "false"
+                ]
+            ]
+        }
+    ]
+}
