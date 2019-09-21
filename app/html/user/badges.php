@@ -2,7 +2,17 @@
 <?php include_once SHARED_PATH . '/default_header.php'; ?>
 
 <div id="category-menu">
-
+<?php
+$category_set = find_session_categories(1);
+$first = true;
+while ($category = mysqli_fetch_assoc($category_set)) {
+?>
+<h3 class="category <?php if ($first == false) echo "category-selected";?>">
+<?php echo $category['category_name']; ?>
+</h3>
+<?php
+}
+?>
 </div>
 
 <div id="badges">

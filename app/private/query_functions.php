@@ -26,6 +26,7 @@ function find_session_badges($session_id, $user_id) {
     return $badge_set;
 }
 
+// Returns all req data for a user and badge
 function find_badge_reqs($user_id, $badge_id) {
     global $db;
 
@@ -50,6 +51,24 @@ function find_badge_reqs($user_id, $badge_id) {
 
     return $req_set;
 
+}
+
+// Returns category data for a session
+function find_session_categories($session_id) {
+    global $db;
+
+    $query = "SELECT * FROM makersite.Category
+                WHERE session_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $session_id);
+    $result = $stmt->execute();
+
+    $category_set = $stmt->get_result();
+
+    $stmt->close();
+
+    return $category_set;
 }
 
 ?>
