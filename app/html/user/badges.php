@@ -14,7 +14,7 @@ while ($badge = mysqli_fetch_assoc($badge_set)) {
 ?>
 </div>
 
-<!--<script src="badge_events.js"></script>-->
+<script src="badge_events.js"></script>
 
 <?php include_once SHARED_PATH . '/default_footer.php'; ?>
 
@@ -24,10 +24,10 @@ while ($badge = mysqli_fetch_assoc($badge_set)) {
 // generates html for a new badge
 function create_badge($badge) {
 ?>
-    <div class="badge">
+    <div class="badge inactive">
         <img class="badge-image" src="<?php echo url_for('/style/img/badge.png'); ?>" alt="badge">
         <h2 class="badge-title"><?php echo $badge['badge_name']; ?></h2>
-        <div class="reqs">
+        <div class="reqs hide">
         <?php 
         $req_set = find_badge_reqs(1, $badge['badge_id']);
         while ($req = mysqli_fetch_assoc($req_set)) {
