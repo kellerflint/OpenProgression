@@ -29,6 +29,8 @@ body {
     background-color: whitesmoke;
 }
 
+/* Badges Normal */
+
 #badges {
     margin-left: 2%;
     margin-right: 2%;
@@ -58,6 +60,27 @@ h3 {
     display: inline-block;
 }
 
+/* Badges Selected */
+
+.active {
+    width: 100%;
+}
+
+/* Reqs */
+.reqs {
+    width: 95%;
+    text-align: left;
+}
+
+.req-image {
+    vertical-align: middle;
+    width: 25px;
+    margin-right: 5px;
+}
+
+.req-text {
+    display: inline-block;
+}
 
 .hide {
     display: none;

@@ -54,7 +54,19 @@ function create_badge($badge) {
 function add_req($req) {
 ?>
 <div class="req">
-    <img class="req-image" src="" alt="">
+    <img class="req-image" src="<?php
+    if ($req['has_req'] == "true") {
+        echo url_for('style/img/true.png');
+    } else {
+        echo url_for('style/img/false.png');
+    }
+    ?>" alt="<?php
+    if ($req['has_req'] == "true") {
+        echo 'true';
+    } else {
+        echo 'false';
+    }?>
+    ">
     <h3 class="req-title"><?php echo $req['req_name']; ?></h3>
     <p class="req-text"><?php echo $req['req_text']; ?></p>
 </div>
