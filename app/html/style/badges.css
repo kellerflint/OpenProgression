@@ -28,3 +28,153 @@ body {
     border-bottom: none;
     background-color: whitesmoke;
 }
+
+#badges {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.badge {
+    display: inline-block;
+    vertical-align: center;
+    width: 250px;
+}
+
+.inactive {
+    height: 250px;
+    animation: float 8s linear infinite;
+}
+
+.inactive:hover {
+    animation: excited .4s linear infinite;
+}
+
+.badge-title {
+    margin-top: 0px;
+    transform: translateY(-10px);
+}
+
+h3 {
+    display: inline-block;
+}
+
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: inline-block;
+    vertical-align: top;
+    animation: show .1s linear;
+}
+
+/* keyframes */
+
+@keyframes glow_gold {
+    0% { 
+        box-shadow: 0 0 5px #c4a300; 
+    }
+    40% { 
+        box-shadow: 0 0 40px #c4a300; 
+    }
+    60% { 
+        box-shadow: 0 0 40px #c4a300; 
+    }
+    100% { 
+        box-shadow: 0 0 5px #c4a300; 
+    }
+}
+
+@keyframes glow_dark {
+    0% { 
+        box-shadow: 0 0 5px #241e00; 
+    }
+    40% { 
+        box-shadow: 0 0 10px #241e00; 
+    }
+    60% { 
+        box-shadow: 0 0 10px #241e00; 
+    }
+    100% { 
+        box-shadow: 0 0 5px #241e00; 
+    }
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+        transform: translateY(-200px) scale(0);
+    }
+
+    100% {
+        transform: translateY(0px) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotateZ(0deg);
+    }
+
+    25% {
+        transform: translateY(4px) rotateZ(1deg);
+    }
+
+    50% {
+        transform: translateY(8px) rotateZ(0deg);
+    }
+
+    75% {
+        transform: translateY(4px) rotateZ(-1deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotateZ(0deg);
+    }
+}
+
+@keyframes excited {
+    0% {
+        transform: translateY(0px) rotateZ(0deg);
+    }
+
+    25% {
+        transform: translateY(4px) rotateZ(3deg);
+    }
+
+    50% {
+        transform: translateY(8px) rotateZ(0deg);
+    }
+
+    75% {
+        transform: translateY(4px) rotateZ(-3deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotateZ(0deg);
+    }
+}
+
+@keyframes rank-float {
+    0% {
+        transform: scale(1.0) rotateZ(0deg);
+    }
+
+    25% {
+        transform: scale(1.02) rotateZ(-.5deg);
+    }
+
+    50% {
+        transform: scale(1.04) rotateZ(0deg);
+    }
+
+    75% {
+        transform: scale(1.02) rotateZ(.5deg);
+    }
+
+    100% {
+        transform: scale(1.0) rotateZ(0deg);
+    }
+}

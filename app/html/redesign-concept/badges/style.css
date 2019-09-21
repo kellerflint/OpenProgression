@@ -93,7 +93,7 @@ nav {
     margin-top: 0px;
     transform: translateY(-10px);
 }
-
+/* MISSING AND LOCKED STYLES */
 .missing > img, .missing > h2 {
     opacity: .75;
     filter: grayscale(100%);
