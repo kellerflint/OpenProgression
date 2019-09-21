@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <title>MyMakerSite</title>
         <link rel="stylesheet" href="<?php echo url_for('style/default.css'); ?>">
+        <link rel="stylesheet" href="<?php echo $style; ?>">
     </head>
 
     <body>

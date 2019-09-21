@@ -15,3 +15,17 @@ for (let i = 0; i < badge_divs.length; i++) {
         }
     });
 }
+
+let category_divs = document.getElementsByClassName("category");
+
+for (let i = 0; i < category_divs.length; i++) {
+    category_divs[i].addEventListener("click", function() {
+        // If a new category is selected:
+        if (!category_divs[i].classList.contains("category-selected")) {
+            for(let c = 0; c < category_divs.length; c++) {
+                category_divs[c].classList.remove("category-selected");
+            }
+            category_divs[i].classList.add("category-selected");
+        }
+    });
+}

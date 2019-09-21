@@ -1,0 +1,30 @@
+body {
+    min-height: 1000px;
+    margin: 0px;
+    background-color: whitesmoke;
+    text-align: center;
+}
+
+#category-menu {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.category {
+    width: 200px;
+    display: inline-block;
+    font-size: 2.5em;
+    border: 2px solid black;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: lightgrey;
+}
+
+.category:hover {
+    background-color: grey;
+}
+
+.category-selected {
+    border-bottom: none;
+    background-color: whitesmoke;
+}

@@ -1,5 +1,7 @@
 <?php require_once '../../private/initialize.php'; ?>
-<?php include_once SHARED_PATH . '/default_header.php'; ?>
+<?php 
+$style = url_for('/style/badges.css');
+include_once SHARED_PATH . '/default_header.php'; ?>
 
 <div id="category-menu">
 <?php
@@ -7,7 +9,7 @@ $category_set = find_session_categories(1);
 $first = true;
 while ($category = mysqli_fetch_assoc($category_set)) {
 ?>
-<h3 class="category <?php if ($first == false) echo "category-selected";?>">
+<h3 class="category <?php if ($first == true) echo "category-selected"; $first = false; ?>">
 <?php echo $category['category_name']; ?>
 </h3>
 <?php
@@ -54,6 +56,7 @@ function add_req($req) {
 <div class="req">
     <img class="req-image" src="" alt="">
     <h3 class="req-title"><?php echo $req['req_name']; ?></h3>
+    <p class="req-text"><?php echo $req['req_text']; ?></p>
 </div>
 <?php
 }
