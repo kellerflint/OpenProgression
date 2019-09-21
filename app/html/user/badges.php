@@ -35,9 +35,23 @@ while ($badge = mysqli_fetch_assoc($badge_set)) {
 
 // generates html for a new badge
 function create_badge($badge) {
+    $has_prereq = true;
 ?>
-    <div class="badge inactive">
-        <img class="badge-image" src="<?php echo url_for('/style/img/badge.png'); ?>" alt="badge">
+    <div class="badge inactive <?php
+    if (!has_prereq($badge)) {
+        echo "locked";
+        $has_prereq = false;
+    } else if ($badge["has_badge"] == "false") {
+        echo "missing";
+    }
+    ?>">
+        <img class="badge-image" src="<?php 
+        if ($has_prereq == false) {
+            echo url_for('/style/img/lock.png'); 
+        } else {
+            echo url_for('/style/img/badge.png'); 
+        }
+        ?>" alt="badge">
         <h2 class="badge-title"><?php echo $badge['badge_name']; ?></h2>
         <div class="reqs hide">
         <?php 
@@ -71,6 +85,22 @@ function add_req($req) {
     <p class="req-text"><?php echo $req['req_text']; ?></p>
 </div>
 <?php
+}
+
+// returns true if user has prereq for badge
+function has_prereq($badge) {
+    if ($badge['badge_prereq_id'] === NULL) {
+        return true;
+    } else {
+        while ($item = mysqli_fetch_assoc($badge_set)) {
+            if ($item['badge_id'] == $badge["badge_prereq_id"]) {
+                if ($item['has_badge'] == "true") {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
 
 ?>
