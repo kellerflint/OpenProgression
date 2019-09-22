@@ -24,8 +24,29 @@ for (let i = 0; i < category_divs.length; i++) {
         if (!category_divs[i].classList.contains("category-selected")) {
             for(let c = 0; c < category_divs.length; c++) {
                 category_divs[c].classList.remove("category-selected");
+                // Hide/Show badge divs when new category is selected
+                for (let j = 0; j < badge_divs.length; j++) {
+                    if (badge_divs[j].getAttribute('data-category') == category_divs[i].getAttribute("data-category")) {
+                        badge_divs[j].classList.remove("hidden");
+                        badge_divs[j].classList.add("visible");
+                    } else {
+                        badge_divs[j].classList.add("hidden");
+                        badge_divs[j].classList.remove("visible");
+                    }
+                }
             }
             category_divs[i].classList.add("category-selected");
         }
     });
+}
+
+// Hides badges on page load
+for (let j = 0; j < badge_divs.length; j++) {
+    if (badge_divs[j].getAttribute('data-category') == category_divs[0].getAttribute("data-category")) {
+        badge_divs[j].classList.remove("hidden");
+        badge_divs[j].classList.add("visible");
+    } else {
+        badge_divs[j].classList.add("hidden");
+        badge_divs[j].classList.remove("visible");
+    }
 }

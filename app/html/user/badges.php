@@ -9,7 +9,10 @@ $category_set = find_session_categories(1);
 $first = true;
 while ($category = mysqli_fetch_assoc($category_set)) {
 ?>
-<h3 class="category <?php if ($first == true) echo "category-selected"; $first = false; ?>">
+<!-- Category Heading -->
+<h3 class="category <?php 
+if ($first == true) echo "category-selected"; $first = false; 
+?>" data-category="<?php echo $category['category_id']; ?>">
 <?php echo $category['category_name']; ?>
 </h3>
 <?php
@@ -44,7 +47,7 @@ function create_badge($badge) {
     } else if ($badge["has_badge"] == "false") {
         echo "missing";
     }
-    ?>">
+    ?>" data-category="<?php echo $badge['category_id']; ?>">
         <img class="badge-image" src="<?php 
         if ($has_prereq == false) {
             echo url_for('/style/img/lock.png'); 
@@ -89,6 +92,8 @@ function add_req($req) {
 
 // returns true if user has prereq for badge
 function has_prereq($badge) {
+    // TODO: $badge_set is null if I don't re-run the query? Find out why
+    $badge_set = find_session_badges(1,1);
     if ($badge['badge_prereq_id'] === NULL) {
         return true;
     } else {

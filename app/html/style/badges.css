@@ -66,6 +66,15 @@ h3 {
     width: 100%;
 }
 
+/* Badges visible/hidden */
+.visible {
+    display: inline-block;
+}
+
+.hidden {
+    display: none;
+}
+
 /* Reqs */
 .reqs {
     width: 95%;
