@@ -12,7 +12,18 @@
     
         <nav>
             <ul>
-                <li><a href="<?php echo url_for('/'); ?>">Login</a></li>
+            <?php if (is_logged_in()) { ?>
+                <div class="dropdown">
+                    <a href="<?php echo url_for('/user/profile.php') . '?user_id=' . $_SESSION['user_id']; ?>"><button
+                            class="dropdown-button">
+                            <?php echo $_SESSION['user_name'] ?? ''; ?></button></a>
+                    <div class="dropdown-content">
+                        <a href="<?php echo url_for('logout.php'); ?>">Logout</a>
+                    </div>
+                </div>
+                <?php } else { ?>
+                <li><a href="<?php echo url_for("index.php"); ?>">Login</a></li>
+                <?php } ?>
                 <li><a href="<?php echo url_for('/user/badges.php'); ?>">Badges</a></li>
             </ul>
         </nav>

@@ -36,10 +36,6 @@ li a:hover {
     background-color: darkgreen;
 }
 
-.manager-owner-admin:hover {
-    background: darkgreen;
-}
-
 .content {
     margin-left: 2%;
     margin-right: 2%;
@@ -96,7 +92,7 @@ a {
 }
 
 .dropdown-button:hover {
-    background-color: rgb(200,200,200);
+    background-color: darkgreen;
 }
 
 
