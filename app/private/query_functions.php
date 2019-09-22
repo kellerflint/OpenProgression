@@ -57,7 +57,7 @@ function find_badge_reqs($user_id, $badge_id) {
 function find_session_categories($session_id) {
     global $db;
 
-    $query = "SELECT * FROM makersite.Category
+    $query = "SELECT * FROM Category
                 WHERE session_id = ?;";
 
     $stmt = $db->prepare($query);
@@ -69,6 +69,42 @@ function find_session_categories($session_id) {
     $stmt->close();
 
     return $category_set;
+}
+
+// Returns the assoc for the given user
+function find_user_by_username($username) {
+    global $db;
+
+    $query = "SELECT * FROM User
+                WHERE user_name = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("s", $username);
+    $result = $stmt->execute();
+
+    $user_set = $stmt->get_result();
+
+    $stmt->close();
+
+    return mysqli_fetch_assoc($user_set);
+}
+
+// Returns the permission level for the given user
+function find_user_permission($session_id, $user_id) {
+    global $db;
+
+    $query = "SELECT * FROM User_Session
+                WHERE user_id = ? AND session_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("ii", $user_id, $session_id);
+    $result = $stmt->execute();
+
+    $permission_set = $stmt->get_result();
+
+    $stmt->close();
+
+    return mysqli_fetch_assoc($permission_set)['user_session_permission'];
 }
 
 ?>
