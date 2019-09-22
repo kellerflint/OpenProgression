@@ -72,24 +72,3 @@ function find_session_categories($session_id) {
 }
 
 ?>
-
-
-<?php
-/*
-Select req like badges (if I use it)
-
-SELECT Req.req_id, Req.badge_id, Req.req_name, Req.req_text, Req.req_order, Req.req_link, 'true' AS has_req FROM Req
-JOIN Badge ON Badge.badge_id = Req.badge_id
-JOIN Category ON Category.category_id = Badge.category_id
-WHERE req_id IN (SELECT req_id FROM User_Req WHERE user_id = 1)
-AND Category.session_id = 1
-UNION ALL
-SELECT Req.req_id, Req.badge_id, Req.req_name, Req.req_text, Req.req_order, Req.req_link, 'false' AS has_req FROM Req 
-JOIN Badge ON Badge.badge_id = Req.badge_id
-JOIN Category ON Category.category_id = Badge.category_id
-WHERE req_id NOT IN (SELECT req_id FROM User_Req WHERE user_id = 1)
-AND Category.session_id = 1
-ORDER BY req_order ASC;
-
-*/
-?>

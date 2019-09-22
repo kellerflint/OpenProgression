@@ -8,10 +8,13 @@ for (let i = 0; i < badge_divs.length; i++) {
             badge_divs[i].childNodes[5].classList.add("hide");
             badge_divs[i].childNodes[5].classList.remove("show");
         } else {
-            badge_divs[i].classList.add("active");
-            badge_divs[i].classList.remove("inactive");
-            badge_divs[i].childNodes[5].classList.add("show");
-            badge_divs[i].childNodes[5].classList.remove("hide");
+            // Don't make locked badges active
+            if (!badge_divs[i].classList.contains("locked")) {
+                badge_divs[i].classList.add("active");
+                badge_divs[i].classList.remove("inactive");
+                badge_divs[i].childNodes[5].classList.add("show");
+                badge_divs[i].childNodes[5].classList.remove("hide");
+            }
         }
     });
 }
