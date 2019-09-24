@@ -1,5 +1,5 @@
 <?php require_once '../private/initialize.php';
-
+require_login();
 $style = "/style/sessions.css";
 
 if (request_is_post()) {

@@ -22,9 +22,9 @@
                         <a href="<?php echo url_for('logout.php'); ?>">Logout</a>
                     </div>
                 </div>
+                <li><a href="<?php echo url_for('/user/badges.php'); ?>">Badges</a></li>
                 <?php } else { ?>
                 <li><a href="<?php echo url_for("index.php"); ?>">Login</a></li>
                 <?php } ?>
-                <li><a href="<?php echo url_for('/user/badges.php'); ?>">Badges</a></li>
             </ul>
         </nav>

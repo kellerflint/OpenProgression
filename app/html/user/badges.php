@@ -1,5 +1,6 @@
 <?php require_once '../../private/initialize.php'; ?>
 <?php 
+require_login();
 $style = url_for('/style/badges.css');
 include_once SHARED_PATH . '/default_header.php'; ?>
 
@@ -29,7 +30,7 @@ while ($badge = mysqli_fetch_assoc($badge_set)) {
 ?>
 </div>
 
-<script src="badge_events.js"></script>
+<script src=<?php echo url_for('/scripts/badge_events.js'); ?>></script>
 
 <?php include_once SHARED_PATH . '/default_footer.php'; ?>
 
