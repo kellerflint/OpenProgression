@@ -13,11 +13,13 @@ function log_in($user, $permission)
     return true;
 }
 
-function is_logged_in() {
+function is_logged_in()
+{
     return isset($_SESSION['user_id']);
 }
 
-function require_login() {
+function require_login()
+{
     if (!is_logged_in()) {
         redirect_to(url_for('/index.php'));
     }
@@ -25,21 +27,21 @@ function require_login() {
 
 // Redirects to sessions if permissions are invalid, redirects to login if not logged in
 // @param permission title required
-function require_permission($required) {
+function require_permission($required)
+{
     require_login();
-    if (!in_array($required, $_SESSION['permission'])) {
+    if ($required != $_SESSION['permission']) {
         redirect_to(url_for("/index.php"));
     }
 }
 
-function unset_session() {
-    if(isset($_SESSION['session_id'])) {
+function unset_session()
+{
+    if (isset($_SESSION['session_id'])) {
         unset($_SESSION['session_id']);
     }
-    
-    if(isset($_SESSION['permissions'])) {
+
+    if (isset($_SESSION['permissions'])) {
         unset($_SESSION['permissions']);
     }
 }
-
-?>
