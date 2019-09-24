@@ -22,7 +22,7 @@ if ($first == true) echo "category-selected"; $first = false;
 
 <div id="badges">
 <?php
-$badge_set = find_session_badges(1,2);
+$badge_set = find_session_badges($_SESSION['session_id'], $_SESSION['user_id']);
 while ($badge = mysqli_fetch_assoc($badge_set)) {
     create_badge($badge);
 }
@@ -58,7 +58,7 @@ function create_badge($badge) {
         <h2 class="badge-title"><?php echo $badge['badge_name']; ?></h2>
         <div class="reqs hide">
         <?php 
-        $req_set = find_badge_reqs(2, $badge['badge_id']);
+        $req_set = find_badge_reqs($_SESSION['user_id'], $badge['badge_id']);
         while ($req = mysqli_fetch_assoc($req_set)) {
             add_req($req);
         }
@@ -93,7 +93,7 @@ function add_req($req) {
 // returns true if user has prereq for badge
 function has_prereq($badge) {
     // TODO: $badge_set is null if I don't re-run the query? Find out why
-    $badge_set = find_session_badges(1,2);
+    $badge_set = find_session_badges($_SESSION['session_id'], $_SESSION['user_id']);
     if ($badge['badge_prereq_id'] === NULL) {
         return true;
     } else {

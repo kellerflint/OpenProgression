@@ -98,7 +98,7 @@ h3 {
 .show {
     display: inline-block;
     vertical-align: top;
-    animation: show .1s linear;
+    animation: show .2s ease-out;
 }
 
 /* MISSING AND LOCKED STYLES */

@@ -18,6 +18,7 @@
                             class="dropdown-button">
                             <?php echo $_SESSION['user_name'] ?? ''; ?></button></a>
                     <div class="dropdown-content">
+                        <a href="<?php echo url_for('sessions.php'); ?>">Sessions</a>
                         <a href="<?php echo url_for('logout.php'); ?>">Logout</a>
                     </div>
                 </div>

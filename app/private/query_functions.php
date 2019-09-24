@@ -107,4 +107,23 @@ function find_user_permission($session_id, $user_id) {
     return mysqli_fetch_assoc($permission_set)['user_session_permission'];
 }
 
+// Returns all sessions a user is in
+function find_user_sessions($user_id) {
+    global $db;
+
+    $query = "SELECT user_id, Session.session_id, session_name, session_description FROM Session
+                JOIN User_Session ON Session.session_id = User_Session.session_id
+                WHERE user_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $user_id);
+    $result = $stmt->execute();
+
+    $session_set = $stmt->get_result();
+
+    $stmt->close();
+
+    return $session_set;
+}
+
 ?>
