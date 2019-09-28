@@ -149,6 +149,9 @@ function find_highest_id()
 
 function add_user($user_nickname)
 {
+
+    global $db;
+
     if (!is_empty($user_nickname)) {
         $user_nickname = explode(" ", $user_nickname);
         $user_nickname = strtolower($user_nickname[0]);
@@ -163,10 +166,17 @@ function add_user($user_nickname)
             }
             fclose($fh);
         }
+        // FUCKING WHITE SPACE. WHY?
+        $password = trim($words[rand(0, count($words) - 1)]) . trim(strval(rand(10, 99)));
 
-        $password = $words[rand(0, count($words) - 1)] . strval(rand(10, 99));
-        $password = str_replace(' ', '', $password);
-        echo $password;
-        $query = "";
+        $query = "INSERT INTO User VALUES (DEFAULT, ?, ?, ?, ?, 0);";
+
+        $stmt = $db->prepare($query);
+        $stmt->bind_param("ssss", $user_name, $user_nickname, $password, $password);
+        $result = $stmt->execute();
+
+        return $result;
+
+        $stmt->close();
     }
 }

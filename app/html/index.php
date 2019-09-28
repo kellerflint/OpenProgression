@@ -10,7 +10,7 @@ if (request_is_post()) {
             // Starts user in first session returned from DB query
             $_SESSION['session_id'] = mysqli_fetch_assoc(find_user_sessions($user['user_id']))['session_id'];
 
-            $permission = find_user_permission(1, $user['user_id']);
+            $permission = find_user_permission($_SESSION['session_id'], $user['user_id']);
             log_in($user, $permission);
             redirect_to(url_for('/user/badges.php'));
         } else {

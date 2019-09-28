@@ -1,2 +1,1 @@
-build badge page from html as example
-build php to replace the html for all badges [add all with php but leave the irrelevant classes hidden until js clicked on button]
+Next up: Add user to specific session not just the database
