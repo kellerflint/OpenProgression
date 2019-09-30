@@ -147,7 +147,8 @@ function find_highest_id()
     return mysqli_fetch_assoc($id)["MAX(user_id)"];
 }
 
-function add_user($user_nickname)
+
+function add_user($user_nickname, $session_id)
 {
 
     global $db;
@@ -166,7 +167,7 @@ function add_user($user_nickname)
             }
             fclose($fh);
         }
-        // FUCKING WHITE SPACE. WHY?
+
         $password = trim($words[rand(0, count($words) - 1)]) . trim(strval(rand(10, 99)));
 
         $query = "INSERT INTO User VALUES (DEFAULT, ?, ?, ?, ?, 0);";
@@ -175,8 +176,27 @@ function add_user($user_nickname)
         $stmt->bind_param("ssss", $user_name, $user_nickname, $password, $password);
         $result = $stmt->execute();
 
+        if ($result) {
+            add_user_session($new_id, $session_id);
+        }
+
         return $result;
 
         $stmt->close();
     }
+}
+
+function add_user_session($user_id, $session_id)
+{
+    global $db;
+
+    $query = "INSERT INTO User_Session VALUES (?, ?, 'user', NOW());";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("ii", $user_id, $session_id);
+    $result = $stmt->execute();
+
+    return $result;
+
+    $stmt->close();
 }

@@ -5,7 +5,7 @@ $style = "/style/user_edit.css";
 
 if (request_is_post()) {
     $user_nickname = $_POST['nickname'];
-    add_user($user_nickname);
+    add_user($user_nickname, $_SESSION['session_id']);
 }
 
 
