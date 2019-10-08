@@ -144,18 +144,6 @@ h3 {
     }
 }
 
-@keyframes show {
-    0% {
-        opacity: 0;
-        transform: translateY(-200px) scale(0);
-    }
-
-    100% {
-        transform: translateY(0px) scale(1);
-        opacity: 1;
-    }
-}
-
 @keyframes float {
     0% {
         transform: translateY(0px) rotateZ(0deg);

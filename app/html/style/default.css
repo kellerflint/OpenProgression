@@ -1,13 +1,24 @@
-html {
-    height: 100%;
+/* Errors */
+
+.errors {
+    color: red;
 }
 
-body {
-    margin: 0px;
-    background-color: whitesmoke;
+.errors ul {
+    margin-top: 0px;
 }
+
+.errors ul li {
+    float: none;
+    border: none;
+}
+
+
+
+
 
 /* Nav styles */
+/*
 nav {
     list-style-type: none;
     margin: 0;
@@ -47,7 +58,7 @@ ul {
 }
 
 /* signin dropdown menu */
-
+/*
 .dropdown {
     float: right;
 }
@@ -99,17 +110,4 @@ a {
     display: block;
 }
 
-/* Errors */
-
-.errors {
-    color: red;
-}
-
-.errors ul {
-    margin-top: 0px;
-}
-
-.errors ul li {
-    float: none;
-    border: none;
-}
+*/
