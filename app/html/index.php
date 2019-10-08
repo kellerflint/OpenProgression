@@ -23,19 +23,19 @@ if (request_is_post()) {
 include_once SHARED_PATH . '/default_header.php';
 ?>
 
-<div class="content">
+<div class="container">
     <h2>Login to MyMakerSite</h2>
-    <?php echo display_errors($errors); ?>
     <form action="index.php" method="POST">
-        <label for="username">Username</label>
-        <br>
-        <input type="text" name="username" id="username">
-        <br>
-        <label for="password">Password</label>
-        <br>
-        <input type="password" name="password" id="password">
-        <br>
-        <button name="submit" id="submitBtn" value="login">Login</button>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="input" class="form-control" id="username" name="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary" value="login">Submit</button>
+        <?php echo display_errors($errors); ?>
     </form>
 </div>
 
