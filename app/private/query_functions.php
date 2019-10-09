@@ -130,6 +130,25 @@ function find_user_sessions($user_id)
     return $session_set;
 }
 
+function find_users_by_session($session_id)
+{
+    global $db;
+
+    $query = "SELECT User.user_id, user_name, user_nickname, user_password, session_id FROM User
+                JOIN User_Session ON User_Session.user_id = User.user_id
+                WHERE session_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $session_id);
+    $result = $stmt->execute();
+
+    $user_set = $stmt->get_result();
+
+    $stmt->close();
+
+    return $user_set;
+}
+
 // Returns current highest user_id
 function find_highest_id()
 {
@@ -147,7 +166,7 @@ function find_highest_id()
     return mysqli_fetch_assoc($id)["MAX(user_id)"];
 }
 
-
+// Adds a user and populates required fields
 function add_user($user_nickname, $session_id)
 {
 
@@ -186,6 +205,7 @@ function add_user($user_nickname, $session_id)
     }
 }
 
+// Adds user to the session
 function add_user_session($user_id, $session_id)
 {
     global $db;

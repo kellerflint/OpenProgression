@@ -1,5 +1,6 @@
 h2 {
     text-align: center;
+    display: block;
 }
 
 form {
@@ -8,4 +9,16 @@ form {
     border: 2px solid grey;
     border-radius: 10px;
     padding: 10px;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+#user-select {
+    margin-bottom: 10px;
 }
