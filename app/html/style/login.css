@@ -1,4 +1,9 @@
+h2 {
+    text-align: center;
+}
+
 form {
+    margin-top: 20px;
     padding: 10px;
     margin-left: 34%;
     width: 30%;

@@ -24,8 +24,8 @@ include_once SHARED_PATH . '/default_header.php';
 ?>
 
 <div class="container">
-    <h2>Login to MyMakerSite</h2>
     <form action="index.php" method="POST">
+        <h2>Login</h2>
         <div class="form-group">
             <label for="username">Username</label>
             <input type="input" class="form-control" id="username" name="username" placeholder="Username">
