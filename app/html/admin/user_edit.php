@@ -12,6 +12,24 @@ if (request_is_post() && $_POST['value'] == "add") {
 include_once '../../private/shared/default_header.php'; ?>
 
 
+<div class="container">
+    <h2>Add User</h2>
+    <form action="user_edit.php" method="POST">
+        <div class="form-group">
+            <label for="nickname">Name</label>
+            <input type="text" class="form-control" id="nickname" name="nickname" placeholder="First Last">
+        </div>
+        <button type="submit" class="btn btn-primary">Add User</button>
+    </form>
+    <h2>Edit User</h2>
+    <form action="user_edit.php" method="POST">
+
+    </form>
+</div>
+
+
+<?php include_once '../../private/shared/default_footer.php'; ?>
+
 <!--
 <div>
     <h2>Add User</h2>
@@ -22,5 +40,3 @@ include_once '../../private/shared/default_header.php'; ?>
     </form>
 </div>
 -->
-
-<?php include_once '../../private/shared/default_footer.php'; ?>
