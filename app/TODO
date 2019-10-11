@@ -1,11 +1,10 @@
 edit_user branch:
 [DONE] Fix users to work with bootstrap
-Fix users to return password
+[DONE] Fix users to return password
 [DONE] Add edit user tap w/ dropdown for user select
-Auto populate user data on selection
+[DONE] Auto populate user data on selection
 Allow edit user data
-On form submit for newly created user, send them to the edit user screen with data (most importantly password, coppied)
-Add a copy password for me text thingy cause that would be useful as hell
+Add a copy password for me button thingy cause that would be useful as hell
 
 sessions branch:
 redo with bootstrap
