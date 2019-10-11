@@ -48,7 +48,8 @@ include_once '../../private/shared/default_header.php'; ?>
 
                     while ($user = mysqli_fetch_assoc($user_set)) {
                         ?>
-                        <option value="<?php echo $user['user_id']; ?>"><?php echo $user['user_name']; ?></option>
+                        <option value="
+                        <?php echo $user['user_id']; ?>" <?php if ($user['user_id'] == $id) echo "selected"; ?>><?php echo $user['user_name']; ?></option>
                     <?php } ?>
                 </select>
                 <button type="submit" class="btn btn-primary" name="get" value="get">Get User</button>
