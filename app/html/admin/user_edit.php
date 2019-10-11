@@ -23,8 +23,6 @@ if (request_is_post() && $_POST['add'] == "add") {
     $username = $user["user_name"];
 } else if (request_is_post() && $_POST['apply'] == "apply") { }
 
-echo $id;
-
 include_once '../../private/shared/default_header.php'; ?>
 
 
