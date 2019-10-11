@@ -1,10 +1,14 @@
-Fix users to work with bootstrap
+edit_user branch:
+[DONE] Fix users to work with bootstrap
 Fix users to return password
-Add edit user tap w/ dropdown for user select
+[DONE] Add edit user tap w/ dropdown for user select
 Auto populate user data on selection
 Allow edit user data
 On form submit for newly created user, send them to the edit user screen with data (most importantly password, coppied)
 Add a copy password for me text thingy cause that would be useful as hell
+
+sessions branch:
+redo with bootstrap
 
 why doesnt jquery just get compiled before depolyment? Just grab the functions you need if overhead is too high.
 Is it because the functions are slow or badly implemented or is it because they overhead of loading the whole library?

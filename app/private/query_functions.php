@@ -72,7 +72,7 @@ function find_session_categories($session_id)
     return $category_set;
 }
 
-// Returns the assoc for the given user
+// Returns the assoc for the given user by id
 function find_user_by_username($username)
 {
     global $db;
@@ -82,6 +82,25 @@ function find_user_by_username($username)
 
     $stmt = $db->prepare($query);
     $stmt->bind_param("s", $username);
+    $result = $stmt->execute();
+
+    $user_set = $stmt->get_result();
+
+    $stmt->close();
+
+    return mysqli_fetch_assoc($user_set);
+}
+
+// Returns the assoc for the given user by id
+function find_user_by_id($id)
+{
+    global $db;
+
+    $query = "SELECT * FROM User
+                WHERE user_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $id);
     $result = $stmt->execute();
 
     $user_set = $stmt->get_result();
@@ -130,6 +149,7 @@ function find_user_sessions($user_id)
     return $session_set;
 }
 
+// Returns all users in session
 function find_users_by_session($session_id)
 {
     global $db;
@@ -197,9 +217,12 @@ function add_user($user_nickname, $session_id)
 
         if ($result) {
             add_user_session($new_id, $session_id);
+            return $new_id;
+        } else {
+            return -1;
         }
 
-        return $result;
+
 
         $stmt->close();
     }
