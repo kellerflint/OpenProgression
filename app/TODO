@@ -3,8 +3,8 @@ edit_user branch:
 [DONE] Fix users to return password
 [DONE] Add edit user tap w/ dropdown for user select
 [DONE] Auto populate user data on selection
-edit user data
-Add a copy password for me button thingy cause that would be useful as hell
+[DONE] edit user data
+Add a copying using info from button
 
 sessions branch:
 redo with bootstrap

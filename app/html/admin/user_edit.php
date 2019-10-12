@@ -32,8 +32,8 @@ include_once '../../private/shared/default_header.php'; ?>
     <h2 id="add-user-h2">Add User</h2>
     <form action="user_edit.php" method="POST" id="add-user">
         <div class="form-group">
-            <label for="nickname">Name</label>
-            <input type="text" class="form-control" id="nickname" name="nickname" placeholder="First L">
+            <label for="nickname-add">Name</label>
+            <input type="text" class="form-control" id="nickname-add" name="nickname" placeholder="First L">
         </div>
         <button type="submit" class="btn btn-primary" name="add" value="add">Add User</button>
     </form>
@@ -74,20 +74,10 @@ include_once '../../private/shared/default_header.php'; ?>
                 <input type="text" class="form-control" id="password" name="password" value="<?php echo $password; ?>">
             </div>
             <button type="submit" class="btn btn-primary" name="apply" value="apply">Apply Changes</button>
+            <button type="button" class="btn btn-secondary" id="copy-info">Copy User Info</button>
         </form>
     <?php } ?>
 </div>
 
 <script src="<?php echo url_for('scripts/user_edit.js'); ?>"></script>
 <?php include_once '../../private/shared/default_footer.php'; ?>
-
-<!--
-<div>
-    <h2>Add User</h2>
-    <form action="user_edit.php" method="POST">
-        <label for="nickname">Name: </label>
-        <input type="text" name="nickname" id="nickname">
-        <button name="submit" value="add">Add User</button>
-    </form>
-</div>
--->
