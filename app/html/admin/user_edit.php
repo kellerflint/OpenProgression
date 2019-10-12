@@ -15,13 +15,15 @@ if (request_is_post() && $_POST['add'] == "add") {
     $nickname = $user["user_nickname"];
     $password = $user["user_password"];
     $username = $user["user_name"];
-} else if (request_is_post() && $_POST['get'] == "get") {
+} else if (request_is_post() && isset($_POST["user_id"])) {
     $id = $_POST["user_id"];
     $user = find_user_by_id($id);
     $nickname = $user["user_nickname"];
     $password = $user["user_password"];
     $username = $user["user_name"];
-} else if (request_is_post() && $_POST['apply'] == "apply") { }
+} else if (request_is_post() && $_POST['apply'] == "apply") {
+    update_user($id, $username, $nickname, $password);
+}
 
 include_once '../../private/shared/default_header.php'; ?>
 
@@ -48,11 +50,11 @@ include_once '../../private/shared/default_header.php'; ?>
 
                     while ($user = mysqli_fetch_assoc($user_set)) {
                         ?>
-                        <option value="
-                        <?php echo $user['user_id']; ?>" <?php if ($user['user_id'] == $id) echo "selected"; ?>><?php echo $user['user_name']; ?></option>
+                        <option value="<?php echo $user['user_id']; ?>" <?php if ($user['user_id'] == $id) echo "selected"; ?>>
+                            <?php echo $user['user_name']; ?>
+                        </option>
                     <?php } ?>
                 </select>
-                <button type="submit" class="btn btn-primary" name="get" value="get">Get User</button>
             </form>
         </div>
     </div>
@@ -75,7 +77,7 @@ include_once '../../private/shared/default_header.php'; ?>
     <?php } ?>
 </div>
 
-
+<script src="<?php echo url_for('scripts/user_edit.js'); ?>"></script>
 <?php include_once '../../private/shared/default_footer.php'; ?>
 
 <!--

@@ -243,3 +243,21 @@ function add_user_session($user_id, $session_id)
 
     $stmt->close();
 }
+
+// updates user username, nickname and password
+function update_user($id, $username, $nickname, $password)
+{
+    global $db;
+
+    $query = "UPDATE User
+                SET user_name = ?, user_nickname = ?, user_password = ?
+                WHERE user_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("sssi", $username, $nickname, $password, $id);
+    $result = $stmt->execute();
+
+    return $result;
+
+    $stmt->close();
+}
