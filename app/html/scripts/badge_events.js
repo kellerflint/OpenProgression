@@ -1,8 +1,9 @@
+// Selecting different badges
 let badge_divs = document.getElementsByClassName("badge");
 
 for (let i = 0; i < badge_divs.length; i++) {
     badge_divs[i].addEventListener("click", function () {
-        if (badge_divs[i].classList.contains("active")){
+        if (badge_divs[i].classList.contains("active")) {
             badge_divs[i].classList.add("inactive");
             badge_divs[i].classList.remove("active");
             badge_divs[i].childNodes[5].classList.add("hide");
@@ -19,13 +20,15 @@ for (let i = 0; i < badge_divs.length; i++) {
     });
 }
 
+
+// Selecting different categories
 let category_divs = document.getElementsByClassName("category");
 
 for (let i = 0; i < category_divs.length; i++) {
-    category_divs[i].addEventListener("click", function() {
+    category_divs[i].addEventListener("click", function () {
         // If a new category is selected:
         if (!category_divs[i].classList.contains("category-selected")) {
-            for(let c = 0; c < category_divs.length; c++) {
+            for (let c = 0; c < category_divs.length; c++) {
                 category_divs[c].classList.remove("category-selected");
                 // Hide/Show badge divs when new category is selected
                 for (let j = 0; j < badge_divs.length; j++) {

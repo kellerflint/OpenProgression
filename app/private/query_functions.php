@@ -72,7 +72,7 @@ function find_session_categories($session_id)
     return $category_set;
 }
 
-// Returns the assoc for the given user
+// Returns the assoc for the given user by id
 function find_user_by_username($username)
 {
     global $db;
@@ -82,6 +82,25 @@ function find_user_by_username($username)
 
     $stmt = $db->prepare($query);
     $stmt->bind_param("s", $username);
+    $result = $stmt->execute();
+
+    $user_set = $stmt->get_result();
+
+    $stmt->close();
+
+    return mysqli_fetch_assoc($user_set);
+}
+
+// Returns the assoc for the given user by id
+function find_user_by_id($id)
+{
+    global $db;
+
+    $query = "SELECT * FROM User
+                WHERE user_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $id);
     $result = $stmt->execute();
 
     $user_set = $stmt->get_result();
@@ -130,6 +149,26 @@ function find_user_sessions($user_id)
     return $session_set;
 }
 
+// Returns all users in session
+function find_users_by_session($session_id)
+{
+    global $db;
+
+    $query = "SELECT User.user_id, user_name, user_nickname, user_password, session_id FROM User
+                JOIN User_Session ON User_Session.user_id = User.user_id
+                WHERE session_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $session_id);
+    $result = $stmt->execute();
+
+    $user_set = $stmt->get_result();
+
+    $stmt->close();
+
+    return $user_set;
+}
+
 // Returns current highest user_id
 function find_highest_id()
 {
@@ -147,7 +186,7 @@ function find_highest_id()
     return mysqli_fetch_assoc($id)["MAX(user_id)"];
 }
 
-
+// Adds a user and populates required fields
 function add_user($user_nickname, $session_id)
 {
 
@@ -178,14 +217,18 @@ function add_user($user_nickname, $session_id)
 
         if ($result) {
             add_user_session($new_id, $session_id);
+            return $new_id;
+        } else {
+            return -1;
         }
 
-        return $result;
+
 
         $stmt->close();
     }
 }
 
+// Adds user to the session
 function add_user_session($user_id, $session_id)
 {
     global $db;
@@ -194,6 +237,25 @@ function add_user_session($user_id, $session_id)
 
     $stmt = $db->prepare($query);
     $stmt->bind_param("ii", $user_id, $session_id);
+    $result = $stmt->execute();
+
+    return $result;
+
+    $stmt->close();
+}
+
+// updates user username, nickname and password
+// TODO: Validation needed to prevent duplicate usernames
+function update_user($id, $username, $nickname, $password)
+{
+    global $db;
+
+    $query = "UPDATE User
+                SET user_name = ?, user_nickname = ?, user_password = ?
+                WHERE user_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("sssi", $username, $nickname, $password, $id);
     $result = $stmt->execute();
 
     return $result;

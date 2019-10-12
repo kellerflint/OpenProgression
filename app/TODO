@@ -1,1 +1,13 @@
-Next up: Add user to specific session not just the database
+edit_user branch:
+[DONE] Fix users to work with bootstrap
+[DONE] Fix users to return password
+[DONE] Add edit user tap w/ dropdown for user select
+[DONE] Auto populate user data on selection
+[DONE] edit user data
+Add a copying using info from button
+
+sessions branch:
+redo with bootstrap
+
+why doesnt jquery just get compiled before depolyment? Just grab the functions you need if overhead is too high.
+Is it because the functions are slow or badly implemented or is it because they overhead of loading the whole library?
