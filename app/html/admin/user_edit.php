@@ -22,7 +22,7 @@ if (request_is_post() && $_POST['add'] == "add") {
     $password = $user["user_password"];
     $username = $user["user_name"];
 } else if (request_is_post() && $_POST['apply'] == "apply") {
-    update_user($id, $username, $nickname, $password);
+    update_user($_POST["id"], $_POST["name"], $_POST["nickname"], $_POST["password"]);
 }
 
 include_once '../../private/shared/default_header.php'; ?>
@@ -60,6 +60,7 @@ include_once '../../private/shared/default_header.php'; ?>
     </div>
     <?php if ($id > 0) { ?>
         <form action="user_edit.php" method="POST" id="edit-user">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
             <div class="form-group">
                 <label for="name">Username</label>
                 <input type="text" class="form-control" id="name" name="name" value="<?php echo $username; ?>">

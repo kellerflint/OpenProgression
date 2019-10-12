@@ -245,6 +245,7 @@ function add_user_session($user_id, $session_id)
 }
 
 // updates user username, nickname and password
+// TODO: Validation needed to prevent duplicate usernames
 function update_user($id, $username, $nickname, $password)
 {
     global $db;
