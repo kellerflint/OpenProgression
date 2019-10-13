@@ -1,12 +1,5 @@
 TODO:
 
-sessions:
-[DONE] redo with bootstrap
-add descriptions to sessions
-
-remove_user:
-add remove a user option
-
 edit_badges:
 add/decide on basic layout
 implement adding new badges
@@ -14,15 +7,23 @@ implement editing existing badges
 implement deleting badges
 
 edit_reqs:
+add badges to header
 add/decide on basic reqs layout (independed from edit badge or part of the edit_badge screen?)
 implement adding new reqs to a badges
 implement editing existing reqs for a badge
 implement deleting reqs from a badge
 
+remove_user:
+add remove a user option
+
 profiles:
 compile requirements and make design decisions
 
 Log:
+
+sessions:
+[DONE] redo with bootstrap
+[DONE] add descriptions to sessions
 
 [MERGED] edit_user:
 [DONE] Fix users to work with bootstrap
