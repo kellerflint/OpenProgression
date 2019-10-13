@@ -40,8 +40,9 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="<?php echo url_for('/admin/user_edit.php'); ?>">Users</a>
+                                <a class="dropdown-item" href="<?php echo url_for('/admin/progression_edit.php'); ?>">Progression</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="<?php echo url_for('logout.php'); ?>">TODO_MANGE</a>
+                                <a class="dropdown-item" href="<?php echo url_for('logout.php'); ?>">EDIT SESSION</a>
                             </div>
                         </li>
                     <?php } ?>
