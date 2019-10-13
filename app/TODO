@@ -1,7 +1,7 @@
 TODO:
 
 edit_progression:
-abstracted edit item form, test with category, badges and reqs FIRST
+edit item form for [DONE] category, badges and reqs
 add categories list and on click of edit, bring up that category's fields in the edit item form
 submiting edits the category's data
 on click of category, bring up list of badges in that category

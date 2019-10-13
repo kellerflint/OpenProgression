@@ -72,6 +72,25 @@ function find_session_categories($session_id)
     return $category_set;
 }
 
+// given category id, return category assoc
+function find_category_by_id($id)
+{
+    global $db;
+
+    $query = "SELECT * FROM Category
+                WHERE category_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $id);
+    $result = $stmt->execute();
+
+    $category_set = $stmt->get_result();
+
+    $stmt->close();
+
+    return mysqli_fetch_assoc($category_set);
+}
+
 // Returns the assoc for the given user by id
 function find_user_by_username($username)
 {
