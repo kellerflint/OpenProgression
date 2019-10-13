@@ -17,7 +17,8 @@ include_once '../private/shared/default_header.php'; ?>
         ?>
         <form action="sessions.php" class="session border bg-light" method="POST">
             <input class="hidden" name="session_id" type="text" value="<?php echo $session['session_id'] ?>">
-            <p><?php echo $session['session_name']; ?></p>
+            <h5><?php echo $session['session_name']; ?></h5>
+            <p><?php echo $session['session_description']; ?></p>
             <button type="submit" name="submit" class="btn btn-primary" value="connect">Connect</button>
             <br>
             <div class="descript hidden">

@@ -1,7 +1,8 @@
 TODO:
 
 sessions:
-redo with bootstrap
+[DONE] redo with bootstrap
+add descriptions to sessions
 
 remove_user:
 add remove a user option
