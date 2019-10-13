@@ -1,17 +1,44 @@
 TODO:
 
+edit_progression:
+abstracted edit item form, test with category, badges and reqs FIRST
+add categories list and on click of edit, bring up that category's fields in the edit item form
+submiting edits the category's data
+on click of category, bring up list of badges in that category
+on edit badge, bring up that badge's fields in edit item form
+submiting edits the badge's data
+on click of badge, bring up that badge's requirements, 
+on edit req, populate fields in edit item form
+submit edit req form edits req's data
+database update to track category order
+move up/down buttons and functionallity for each category
+move up/down buttons and functionallity for each badge
+move up/down buttons and functionallity for each requirement
+
+
+
+categories layout 
+
 edit_badges:
+[DONE] add badges to header
 add/decide on basic layout
+update badges page for admins to include edit option linking to edit badge page w/ GET on badge id
+update badges page for admins to reorder badges, button on left and right of edit allows them to swap left or right
 implement adding new badges
 implement editing existing badges
 implement deleting badges
 
 edit_reqs:
-add badges to header
 add/decide on basic reqs layout (independed from edit badge or part of the edit_badge screen?)
 implement adding new reqs to a badges
 implement editing existing reqs for a badge
 implement deleting reqs from a badge
+
+edit_categories:
+add/decide on basic layout for editing categories
+implement add new categories
+implement edit categories
+implement remove categories
 
 remove_user:
 add remove a user option
