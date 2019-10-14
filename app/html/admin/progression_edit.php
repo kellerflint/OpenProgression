@@ -19,8 +19,10 @@ include_once '../../private/shared/default_header.php'; ?>
         <?php } ?>
     </div>
     <div class="edit-item">
-        <h2>Edit Category</h2>
-        <?php include_once "edit_forms/category_edit.php"; ?>
+        <?php if (isset($_GET["category_id"])) {
+            include_once "edit_forms/category_edit.php";
+            // if (req_is_set) else if (badge_is_set) else if (cat_is_set)...
+        } ?>
     </div>
 </div>
 <script src="<?php echo url_for("scripts/progression_events.js") ?>"></script>
