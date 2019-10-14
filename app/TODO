@@ -1,12 +1,14 @@
 TODO:
 
 edit_progression:
-edit item form for [DONE] category, badges and reqs
+[DONE] edit item form for category
 add categories list and on click of edit, bring up that category's fields in the edit item form
 submiting edits the category's data
+edit item form for badge
 on click of category, bring up list of badges in that category
 on edit badge, bring up that badge's fields in edit item form
 submiting edits the badge's data
+edit item form for req
 on click of badge, bring up that badge's requirements, 
 on edit req, populate fields in edit item form
 submit edit req form edits req's data
