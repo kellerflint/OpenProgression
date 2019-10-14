@@ -24,9 +24,11 @@ if (request_is_post() && isset($_POST["category_name"])) {
         <?php } ?>
     </div>
     <div class="edit-item">
-        <?php if (isset($_GET["category_id"])) {
+        <?php // if (req_is_set) else if (badge_is_set) else if (cat_is_set)...
+        if (isset($_GET["badge_id"])) {
+            include_once "edit_forms/badge_edit.php";
+        } else if (isset($_GET["category_id"])) {
             include_once "edit_forms/category_edit.php";
-            // if (req_is_set) else if (badge_is_set) else if (cat_is_set)...
         } ?>
     </div>
 </div>

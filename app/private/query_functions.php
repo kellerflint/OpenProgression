@@ -53,6 +53,9 @@ function find_badge_reqs($user_id, $badge_id)
     return $req_set;
 }
 
+function find_badge_by_id($id)
+{ }
+
 // Returns category data for a session
 function find_session_categories($session_id)
 {
