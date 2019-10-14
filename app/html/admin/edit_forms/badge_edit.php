@@ -1,4 +1,4 @@
-<h2>Edit Badge</h2>
+<h2 class="text-center">Edit Badge</h2>
 <form action="progression_edit.php" METHOD="POST">
     <?php $badge = find_badge_by_id($_GET["badge_id"]); ?>
     <input type="hidden" name="badge_id" value="<?php echo $badge["badge_id"]; ?>">
@@ -30,7 +30,7 @@
     </div>
     <div class="form-group">
         <label for="select-prereq">Prerequisite</label>
-        <select class="form-control" id="select-prereq">
+        <select class="form-control" id="select-prereq" name="badge_prereq_id">
             <option value="NULL">No Prerequisite</option>
             <?php
             $badge_set =  find_badges_by_session($_SESSION["session_id"]);

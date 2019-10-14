@@ -5,14 +5,19 @@ $style = "/style/progression_edit.css";
 
 include_once '../../private/shared/default_header.php';
 
-if (request_is_post() && isset($_POST["category_name"])) {
-    update_category($_POST["category_id"], $_POST["category_name"], $_POST["category_description"]);
+if (request_is_post()) {
+    if (isset($_POST["category_name"])) {
+        update_category($_POST["category_id"], $_POST["category_name"], $_POST["category_description"]);
+    } else if (isset($_POST["badge_name"])) {
+        update_badge($_POST["badge_id"], $_POST["badge_name"], $_POST["badge_description"], $_POST["badge_prereq_id"], $_POST["category_id"], $_POST["badge_experience"]);
+    }
 }
 
 ?>
 
 <div class="container">
-    <div class="category-forms">
+    <div class="category-forms float-left">
+        <h2 class="text-center">Categories</h2>
         <?php
         $category_set = find_session_categories($_SESSION["session_id"]);
         while ($category = mysqli_fetch_assoc($category_set)) {
@@ -23,9 +28,12 @@ if (request_is_post() && isset($_POST["category_name"])) {
                 <button type="submit" class="edit-category btn btn-primary">Edit</button>
             </form>
         <?php } ?>
+    </div>
 
+    <div class="badge-forms float-left">
         <?php
         if (isset($_GET["category_id"])) {
+            echo "<h2 class=\"text-center\">Badges</h2>";
             $badge_set = find_badges_by_category($_GET["category_id"]);
             while ($badge = mysqli_fetch_assoc($badge_set)) {
                 ?>
@@ -37,9 +45,9 @@ if (request_is_post() && isset($_POST["category_name"])) {
                 </form>
         <?php }
         } ?>
-
     </div>
-    <div class="edit-item">
+
+    <div class="edit-item float-right">
         <?php
         if (isset($_GET["badge_id"])) {
             include_once "edit_forms/badge_edit.php";

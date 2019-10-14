@@ -358,3 +358,23 @@ function update_category($id, $name, $description)
 
     $stmt->close();
 }
+
+// 
+function update_badge($id, $name, $description, $prereq_id, $category_id, $experience)
+{
+    global $db;
+
+    if ($prereq_id == "NULL")
+        $prereq_id = NULL;
+
+    $query = "UPDATE Badge
+                SET badge_name = ?, badge_description = ?, badge_prereq_id = ?, category_id = ?, badge_experience = ?
+                WHERE badge_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("ssiiii", $name, $description, $prereq_id, $category_id, $experience, $id);
+    $result = $stmt->execute();
+    return $result;
+
+    $stmt->close();
+}

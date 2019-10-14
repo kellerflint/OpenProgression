@@ -1,4 +1,4 @@
-<h2>Edit Category</h2>
+<h2 class="text-center">Edit Category</h2>
 <form action="progression_edit.php" METHOD="POST">
     <?php $category = find_category_by_id($_GET["category_id"]); ?>
     <input type="hidden" name="category_id" value="<?php echo $category["category_id"]; ?>">
