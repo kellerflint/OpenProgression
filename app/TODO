@@ -4,7 +4,7 @@ edit_progression:
 [DONE] edit item form for category
 [DONE] add categories list and on click of edit, bring up that category's fields in the edit item form
 [DONE] submiting edits the category's data
-edit item form for badge
+[DONE] edit item form for badge
 on click of category, bring up list of badges in that category
 on edit badge, bring up that badge's fields in edit item form
 submiting edits the badge's data

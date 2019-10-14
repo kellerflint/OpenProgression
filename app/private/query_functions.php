@@ -92,6 +92,26 @@ function find_badges_by_session($session_id)
     return $badge_set;
 }
 
+// returns badge_set from given category id
+function find_badges_by_category($category_id)
+{
+    global $db;
+
+    $query = "SELECT * FROM Badge
+                WHERE category_id = ?
+                ORDER BY badge_order ASC;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $category_id);
+    $result = $stmt->execute();
+
+    $badge_set = $stmt->get_result();
+
+    $stmt->close();
+
+    return $badge_set;
+}
+
 // Returns category data for a session
 function find_session_categories($session_id)
 {
