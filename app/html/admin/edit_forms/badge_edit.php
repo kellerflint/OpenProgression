@@ -16,16 +16,30 @@
     </div>
     <div class="form-group">
         <label for="select-category">Category</label>
-        <select class="form-control" id="select-category">
-            <option value="none">select...</option>
-            <!--list of other badges in session, ordered by category then badge_order-->
+        <select class="form-control" id="select-category" name="category_id">
+            <option value="-1">select...</option>
+            <?php
+            $category_set = find_session_categories($_SESSION["session_id"]);
+            while ($category = mysqli_fetch_assoc($category_set)) {
+                ?>
+                <option value="<?php echo $category["category_id"]; ?>" <?php if ($category["category_id"] == $badge["category_id"]) echo "selected"; ?>>
+                    <?php echo $category["category_name"]; ?>
+                </option>
+            <?php } ?>
         </select>
     </div>
     <div class="form-group">
         <label for="select-prereq">Prerequisite</label>
         <select class="form-control" id="select-prereq">
-            <option value="none">select...</option>
-            <!--list of other badges in session, ordered by category then badge_order-->
+            <option value="NULL">No Prerequisite</option>
+            <?php
+            $badge_set =  find_badges_by_session($_SESSION["session_id"]);
+            while ($badge_item = mysqli_fetch_assoc($badge_set)) {
+                ?>
+                <option value="<?php echo $badge_item["badge_id"]; ?>" <?php if ($badge_item["badge_id"] == $badge["badge_prereq_id"]) echo "selected"; ?>>
+                    <?php echo $badge_item["badge_name"]; ?>
+                </option>
+            <?php } ?>
         </select>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>

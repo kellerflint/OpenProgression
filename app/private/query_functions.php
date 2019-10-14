@@ -53,8 +53,44 @@ function find_badge_reqs($user_id, $badge_id)
     return $req_set;
 }
 
+// returns assoc for badge by given id
 function find_badge_by_id($id)
-{ }
+{
+    global $db;
+
+    $query = "SELECT * FROM Badge
+                WHERE badge_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $id);
+    $result = $stmt->execute();
+
+    $badge_set = $stmt->get_result();
+
+    $stmt->close();
+
+    return mysqli_fetch_assoc($badge_set);
+}
+
+function find_badges_by_session($session_id)
+{
+    global $db;
+
+    $query = "SELECT badge_id, badge_name, badge_prereq_id, badge_order, category_order, Badge.category_id, session_id FROM Badge
+                JOIN Category ON Category.category_id = Badge.category_id
+                WHERE session_id = ?
+                ORDER BY category_order ASC, badge_order ASC;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $session_id);
+    $result = $stmt->execute();
+
+    $badge_set = $stmt->get_result();
+
+    $stmt->close();
+
+    return $badge_set;
+}
 
 // Returns category data for a session
 function find_session_categories($session_id)

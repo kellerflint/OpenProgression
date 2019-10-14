@@ -36,6 +36,7 @@ CREATE TABLE Category
     category_id int NOT NULL AUTO_INCREMENT,
     category_name varchar(255) NOT NULL,
     category_description varchar(5000),
+    category_order int NOT NULL,
     session_id int,
 
     PRIMARY KEY (category_id),

@@ -8,6 +8,7 @@ include_once '../../private/shared/default_header.php';
 if (request_is_post() && isset($_POST["category_name"])) {
     update_category($_POST["category_id"], $_POST["category_name"], $_POST["category_description"]);
 }
+
 ?>
 
 <div class="container">
@@ -24,7 +25,7 @@ if (request_is_post() && isset($_POST["category_name"])) {
         <?php } ?>
     </div>
     <div class="edit-item">
-        <?php // if (req_is_set) else if (badge_is_set) else if (cat_is_set)...
+        <?php
         if (isset($_GET["badge_id"])) {
             include_once "edit_forms/badge_edit.php";
         } else if (isset($_GET["category_id"])) {
