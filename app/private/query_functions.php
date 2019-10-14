@@ -281,3 +281,21 @@ function update_user($id, $username, $nickname, $password)
 
     $stmt->close();
 }
+
+// needs validation to make sure category is in admin's sessions
+function update_category($id, $name, $description)
+{
+    global $db;
+
+    $query = "UPDATE Category
+                SET category_name = ?, category_description = ?
+                WHERE category_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("ssi", $name, $description, $id);
+    $result = $stmt->execute();
+
+    return $result;
+
+    $stmt->close();
+}

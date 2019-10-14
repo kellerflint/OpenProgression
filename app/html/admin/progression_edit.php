@@ -3,7 +3,12 @@ require_permission(ADM);
 
 $style = "/style/progression_edit.css";
 
-include_once '../../private/shared/default_header.php'; ?>
+include_once '../../private/shared/default_header.php';
+
+if (request_is_post() && isset($_POST["category_name"])) {
+    update_category($_POST["category_id"], $_POST["category_name"], $_POST["category_description"]);
+}
+?>
 
 <div class="container">
     <div class="category-forms">
