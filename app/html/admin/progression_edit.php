@@ -15,7 +15,7 @@ if (request_is_post()) {
 
 ?>
 
-<div class="category-forms">
+<div class="forms">
     <h2 class="text-center">Categories</h2>
     <?php
     $category_set = find_session_categories($_SESSION["session_id"]);
@@ -29,7 +29,7 @@ if (request_is_post()) {
     <?php } ?>
 </div>
 
-<div class="badge-forms">
+<div class="forms">
     <?php
     if (isset($_GET["category_id"])) {
         echo "<h2 class=\"text-center\">Badges</h2>";
@@ -46,7 +46,7 @@ if (request_is_post()) {
     } ?>
 </div>
 
-<div class="badge-forms">
+<div class="forms">
     <?php
     if (isset($_GET["badge_id"])) {
         echo "<h2 class=\"text-center\">Reqs</h2>";
@@ -66,11 +66,14 @@ if (request_is_post()) {
 
 <div class="edit-item">
     <?php
-    if (isset($_GET["badge_id"])) {
+    if (isset($_GET["req_id"])) {
+        include_once "edit_forms/req_edit.php";
+    } else if (isset($_GET["badge_id"])) {
         include_once "edit_forms/badge_edit.php";
     } else if (isset($_GET["category_id"])) {
         include_once "edit_forms/category_edit.php";
-    } ?>
+    }
+    ?>
 </div>
 <script src="<?php echo url_for("scripts/progression_events.js") ?>"></script>
 <?php include_once '../../private/shared/default_footer.php'; ?>

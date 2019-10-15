@@ -53,12 +53,31 @@ function find_badge_reqs($user_id, $badge_id)
     return $req_set;
 }
 
+// Returns req assoc
+function find_req_by_id($id)
+{
+    global $db;
+
+    $query = "SELECT * FROM Req
+                WHERE req_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $id);
+    $result = $stmt->execute();
+
+    $req_set = $stmt->get_result();
+
+    $stmt->close();
+
+    return mysqli_fetch_assoc($req_set);
+}
+
 // returns req set for a badge
 function find_reqs_by_badge_id($id)
 {
     global $db;
 
-    $query = "SELECT * FROM Req WHERE badge_id = ?;";
+    $query = "SELECT * FROM Req WHERE badge_id = ? ORDER BY req_order ASC;";
 
     $stmt = $db->prepare($query);
     $stmt->bind_param("i", $id);

@@ -1,29 +1,22 @@
-
-
-.badge-forms {
-    margin-top: 1rem;
+.forms {
+    margin: 1rem;
+    width: 20%;
     display: inline-block;
     vertical-align: top;
-
 }
 
-.category-forms {
+form {
+    padding: 1rem;
     margin-top: 1rem;
-    display: inline-block;
-    vertical-align: top;
 }
 
 .edit-item {
+    width: 30%;
     margin-top: 1rem;
     display:inline-block;
     border: 1px solid lightgrey;
 }
 
-form {
-    margin: 1rem;
-    width: 300px;
-    padding: 1rem;
-}
 
 .selected {
     background-color: lightblue;
