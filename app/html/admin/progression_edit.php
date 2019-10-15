@@ -10,6 +10,8 @@ if (request_is_post()) {
         update_category($_POST["category_id"], $_POST["category_name"], $_POST["category_description"]);
     } else if (isset($_POST["badge_name"])) {
         update_badge($_POST["badge_id"], $_POST["badge_name"], $_POST["badge_description"], $_POST["badge_prereq_id"], $_POST["category_id"], $_POST["badge_experience"]);
+    } else if (isset($_POST["req_name"])) {
+        update_req($_POST["req_id"], $_POST["req_name"], $_POST["req_text"], $_POST["badge_id"], $_POST["req_link"]);
     }
 }
 

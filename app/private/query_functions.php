@@ -415,3 +415,23 @@ function update_badge($id, $name, $description, $prereq_id, $category_id, $exper
 
     $stmt->close();
 }
+
+//
+function update_req($id, $name, $text, $badge_id, $link)
+{
+    global $db;
+
+    if ($link == "NULL")
+        $link = NULL;
+
+    $query = "UPDATE Req
+                SET req_name = ?, req_text = ?, badge_id = ?, req_link = ?
+                WHERE req_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("ssisi", $name, $text, $badge_id, $link, $id);
+    $result = $stmt->execute();
+    return $result;
+
+    $stmt->close();
+}
