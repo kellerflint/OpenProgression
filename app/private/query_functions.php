@@ -58,8 +58,7 @@ function find_reqs_by_badge_id($id)
 {
     global $db;
 
-    $query = "SELECT * FROM Req
-                WHERE req_id = ?;";
+    $query = "SELECT * FROM Req WHERE badge_id = ?;";
 
     $stmt = $db->prepare($query);
     $stmt->bind_param("i", $id);

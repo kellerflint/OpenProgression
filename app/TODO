@@ -8,9 +8,9 @@ edit_progression:
 [DONE] on click of category, bring up list of badges in that category
 [DONE] on edit badge, bring up that badge's fields in edit item form
 [DONE] submiting edits the badge's data
-basic styling
-edit item form for req
+[DONE] basic styling
 on click of badge, bring up that badge's requirements, 
+edit item form for req
 on edit req, populate fields in edit item form
 submit edit req form edits req's data
 database update to track category order
