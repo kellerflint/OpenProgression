@@ -1,6 +1,7 @@
 TODO:
 
 edit_progression:
+[DONE] database update to track category order
 [DONE] edit item form for category
 [DONE] add categories list and on click of edit, bring up that category's fields in the edit item form
 [DONE] submiting edits the category's data
@@ -13,7 +14,13 @@ edit_progression:
 [DONE] edit item form for req
 [DONE] on edit req, populate fields in edit item form
 [DONE] submit edit req form edits req's data
-database update to track category order
+preserve location on form submit
+add new category
+add new badge
+add new req
+remove category
+remove badge
+remove req
 move up/down buttons and functionallity for each category
 move up/down buttons and functionallity for each badge
 move up/down buttons and functionallity for each requirement

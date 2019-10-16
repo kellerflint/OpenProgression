@@ -3,17 +3,23 @@ require_permission(ADM);
 
 $style = "/style/progression_edit.css";
 
-include_once '../../private/shared/default_header.php';
+$url = "?";
 
 if (request_is_post()) {
     if (isset($_POST["category_name"])) {
         update_category($_POST["category_id"], $_POST["category_name"], $_POST["category_description"]);
+        $url .= "category_id=" . $_POST["category_id"];
     } else if (isset($_POST["badge_name"])) {
         update_badge($_POST["badge_id"], $_POST["badge_name"], $_POST["badge_description"], $_POST["badge_prereq_id"], $_POST["category_id"], $_POST["badge_experience"]);
+        $url .= "category_id=" . $_POST["category_id"] . "&badge_id=" . $_POST["badge_id"];
     } else if (isset($_POST["req_name"])) {
         update_req($_POST["req_id"], $_POST["req_name"], $_POST["req_text"], $_POST["badge_id"], $_POST["req_link"]);
+        $url .= "category_id=" . $_POST["category_id"] . "&badge_id=" . $_POST["badge_id"] . "&req_id=" . $_POST["req_id"];
     }
+    redirect_to("progression_edit.php" . $url);
 }
+
+include_once '../../private/shared/default_header.php';
 
 ?>
 

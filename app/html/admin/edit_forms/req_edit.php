@@ -1,6 +1,7 @@
 <h2 class="text-center">Edit Req</h2>
 <form action="progression_edit.php" METHOD="POST">
     <?php $req = find_req_by_id($_GET["req_id"]); ?>
+    <input type="hidden" name="category_id" value="<?php echo $_GET["category_id"]; ?>">
     <input type="hidden" name="req_id" value="<?php echo $req["req_id"]; ?>">
     <div class="form-group">
         <label for="req-name">Name</label>
