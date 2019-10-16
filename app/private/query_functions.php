@@ -435,3 +435,31 @@ function update_req($id, $name, $text, $badge_id, $link)
 
     $stmt->close();
 }
+
+function create_category($name, $description, $session_id)
+{
+    global $db;
+
+    $max = find_category_order_max()["max"] + 1;
+
+    $query = "INSERT INTO Category VALUES (DEFAULT, ?, ?, ?, ?);";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("ssii", $name, $description, $session_id, $max);
+    $result = $stmt->execute();
+    $stmt->close();
+}
+
+function find_category_order_max()
+{
+    global $db;
+
+    $query = "SELECT MAX(category_order) AS max FROM Category";
+
+    $stmt = $db->prepare($query);
+    $result = $stmt->execute();
+    $max_set = $stmt->get_result();
+    $stmt->close();
+
+    return mysqli_fetch_assoc($max_set);
+}

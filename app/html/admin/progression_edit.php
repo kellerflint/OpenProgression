@@ -7,8 +7,13 @@ $url = "?";
 
 if (request_is_post()) {
     if (isset($_POST["category_name"])) {
-        update_category($_POST["category_id"], $_POST["category_name"], $_POST["category_description"]);
-        $url .= "category_id=" . $_POST["category_id"];
+        if ($_POST["category_id"] == 0) {
+            $id = create_category($_POST["category_name"], $_POST["category_description"], $_SESSION["session_id"]);
+        } else {
+            update_category($_POST["category_id"], $_POST["category_name"], $_POST["category_description"]);
+            $id = $_POST["category_id"];
+        }
+        $url .= "category_id=" . $id;
     } else if (isset($_POST["badge_name"])) {
         update_badge($_POST["badge_id"], $_POST["badge_name"], $_POST["badge_description"], $_POST["badge_prereq_id"], $_POST["category_id"], $_POST["badge_experience"]);
         $url .= "category_id=" . $_POST["category_id"] . "&badge_id=" . $_POST["badge_id"];
@@ -32,9 +37,16 @@ include_once '../../private/shared/default_header.php';
         <form action="progression_edit.php" class="category-item border text-center <?php if ($category["category_id"] == $_GET["category_id"]) echo "selected"; ?>" method="GET">
             <h4><?php echo $category["category_name"]; ?></h4>
             <input type="hidden" name="category_id" value="<?php echo $category["category_id"]; ?>">
+            <input type="hidden" name="action_type" value="edit">
             <button type="submit" class="edit-category btn btn-primary">Edit</button>
         </form>
     <?php } ?>
+    <form action="progression_edit.php" class="category-item border text-center" method="GET">
+        <input type="hidden" name="category_id" value="<?php echo $category["category_id"]; ?>">
+        <input type="hidden" name="action_type" value="create">
+        <button class="btn btn-secondary">Add Category</button>
+    </form>
+
 </div>
 
 <div class="forms">

@@ -1,6 +1,18 @@
-<h2 class="text-center">Edit Category</h2>
+<?php if ($_GET["action_type"] == "edit") { ?>
+    <h2 class="text-center">Edit Category</h2>
+<?php } else if ($_GET["action_type"] == "create") { ?>
+    <h2 class="text-center">Create Category</h2>
+<?php } ?>
 <form action="progression_edit.php" METHOD="POST">
-    <?php $category = find_category_by_id($_GET["category_id"]); ?>
+    <?php
+    if ($_GET["action_type"] == "edit") {
+        $category = find_category_by_id($_GET["category_id"]);
+    } else {
+        $category["category_id"] = 0;
+        $category["category_name"] = "";
+        $category["category_description"] = "";
+    }
+    ?>
     <input type="hidden" name="category_id" value="<?php echo $category["category_id"]; ?>">
     <div class="form-group">
         <label for="category-name">Name</label>

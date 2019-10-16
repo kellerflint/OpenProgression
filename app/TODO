@@ -14,8 +14,8 @@ edit_progression:
 [DONE] edit item form for req
 [DONE] on edit req, populate fields in edit item form
 [DONE] submit edit req form edits req's data
-preserve location on form submit
-add new category
+[DONE] preserve location on form submit
+[DONE] add new category
 add new badge
 add new req
 remove category
