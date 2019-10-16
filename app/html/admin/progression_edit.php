@@ -7,16 +7,22 @@ $url = "?";
 
 if (request_is_post()) {
     if (isset($_POST["category_name"])) {
+        $id = "";
         if ($_POST["category_id"] == 0) {
-            $id = create_category($_POST["category_name"], $_POST["category_description"], $_SESSION["session_id"]);
+            create_category($_POST["category_name"], $_POST["category_description"], $_SESSION["session_id"]);
         } else {
             update_category($_POST["category_id"], $_POST["category_name"], $_POST["category_description"]);
             $id = $_POST["category_id"];
         }
         $url .= "category_id=" . $id;
     } else if (isset($_POST["badge_name"])) {
-        update_badge($_POST["badge_id"], $_POST["badge_name"], $_POST["badge_description"], $_POST["badge_prereq_id"], $_POST["category_id"], $_POST["badge_experience"]);
-        $url .= "category_id=" . $_POST["category_id"] . "&badge_id=" . $_POST["badge_id"];
+        if ($_POST["badge_id"] == 0) {
+            create_badge($_POST["category_id"], $_POST["badge_name"], $_POST["badge_description"], $_POST["badge_experience"], $_POST["badge_prereq_id"]);
+        } else {
+            update_badge($_POST["badge_id"], $_POST["badge_name"], $_POST["badge_description"], $_POST["badge_prereq_id"], $_POST["category_id"], $_POST["badge_experience"]);
+            $id = "&badge_id=" . $_POST["badge_id"];
+        }
+        $url .= "category_id=" . $_POST["category_id"] . $id;
     } else if (isset($_POST["req_name"])) {
         update_req($_POST["req_id"], $_POST["req_name"], $_POST["req_text"], $_POST["badge_id"], $_POST["req_link"]);
         $url .= "category_id=" . $_POST["category_id"] . "&badge_id=" . $_POST["badge_id"] . "&req_id=" . $_POST["req_id"];
@@ -42,7 +48,7 @@ include_once '../../private/shared/default_header.php';
         </form>
     <?php } ?>
     <form action="progression_edit.php" class="category-item border text-center" method="GET">
-        <input type="hidden" name="category_id" value="<?php echo $category["category_id"]; ?>">
+        <input type="hidden" name="category_id" value="0">
         <input type="hidden" name="action_type" value="create">
         <button class="btn btn-secondary">Add Category</button>
     </form>
@@ -51,7 +57,7 @@ include_once '../../private/shared/default_header.php';
 
 <div class="forms">
     <?php
-    if (isset($_GET["category_id"])) {
+    if (isset($_GET["category_id"]) && $_GET["category_id"] > 0) {
         echo "<h2 class=\"text-center\">Badges</h2>";
         $badge_set = find_badges_by_category($_GET["category_id"]);
         while ($badge = mysqli_fetch_assoc($badge_set)) {
@@ -60,10 +66,17 @@ include_once '../../private/shared/default_header.php';
                 <h4><?php echo $badge["badge_name"]; ?></h4>
                 <input type="hidden" name="category_id" value="<?php echo $_GET["category_id"]; ?>">
                 <input type="hidden" name="badge_id" value="<?php echo $badge["badge_id"]; ?>">
+                <input type="hidden" name="action_type" value="edit">
                 <button type="submit" class="edit-badge btn btn-primary">Edit</button>
             </form>
-    <?php }
-    } ?>
+        <?php } ?>
+        <form action="progression_edit.php" class="badge-item border text-center" method="GET">
+            <input type="hidden" name="category_id" value="<?php echo $_GET["category_id"]; ?>">
+            <input type="hidden" name="badge_id" value="0">
+            <input type="hidden" name="action_type" value="create">
+            <button class="btn btn-secondary">Add Badge</button>
+        </form>
+    <?php } ?>
 </div>
 
 <div class="forms">

@@ -1,6 +1,18 @@
-<h2 class="text-center">Edit Badge</h2>
+<?php if ($_GET["action_type"] == "edit") { ?>
+    <h2 class="text-center">Edit Badge</h2>
+<?php } else if ($_GET["action_type"] == "create") { ?>
+    <h2 class="text-center">Create Badge</h2>
+<?php } ?>
 <form action="progression_edit.php" METHOD="POST">
-    <?php $badge = find_badge_by_id($_GET["badge_id"]); ?>
+    <?php  ?>
+    <?php
+    if ($_GET["action_type"] == "edit") {
+        $badge = find_badge_by_id($_GET["badge_id"]);;
+    } else {
+        $badge["badge_id"] = 0;
+        $badge["category_id"] = $_GET["category_id"];
+    }
+    ?>
     <input type="hidden" name="badge_id" value="<?php echo $badge["badge_id"]; ?>">
     <div class="form-group">
         <label for="badge-name">Name</label>

@@ -7,10 +7,6 @@
     <?php
     if ($_GET["action_type"] == "edit") {
         $category = find_category_by_id($_GET["category_id"]);
-    } else {
-        $category["category_id"] = 0;
-        $category["category_name"] = "";
-        $category["category_description"] = "";
     }
     ?>
     <input type="hidden" name="category_id" value="<?php echo $category["category_id"]; ?>">

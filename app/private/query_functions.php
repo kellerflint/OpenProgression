@@ -463,3 +463,36 @@ function find_category_order_max()
 
     return mysqli_fetch_assoc($max_set);
 }
+
+function create_badge($category_id, $name, $description, $experience, $prereq_id)
+{
+
+    global $db;
+
+
+    if ($prereq_id == "NULL")
+        $prereq_id = NULL;
+
+    $max = find_badge_order_max($category_id)["max"] + 1;
+    $query = "INSERT INTO Badge VALUES (DEFAULT, ?, ?, ?, ?, ?, ?);";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("ssiiii", $name, $description, $prereq_id, $category_id, $experience, $max);
+    $result = $stmt->execute();
+    $stmt->close();
+}
+
+function find_badge_order_max($category_id)
+{
+    global $db;
+
+    $query = "SELECT MAX(badge_order) AS max FROM Badge WHERE category_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $category_id);
+    $result = $stmt->execute();
+    $max_set = $stmt->get_result();
+    $stmt->close();
+
+    return mysqli_fetch_assoc($max_set);
+}
