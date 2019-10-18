@@ -4,7 +4,6 @@
     <h2 class="text-center">Create Badge</h2>
 <?php } ?>
 <form action="progression_edit.php" METHOD="POST">
-    <?php  ?>
     <?php
     if ($_GET["action_type"] == "edit") {
         $badge = find_badge_by_id($_GET["badge_id"]);;

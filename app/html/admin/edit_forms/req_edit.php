@@ -1,6 +1,18 @@
-<h2 class="text-center">Edit Req</h2>
+<?php if ($_GET["action_type"] == "edit") { ?>
+    <h2 class="text-center">Edit Req</h2>
+<?php } else if ($_GET["action_type"] == "create") { ?>
+    <h2 class="text-center">Create Req</h2>
+<?php } ?>
 <form action="progression_edit.php" METHOD="POST">
-    <?php $req = find_req_by_id($_GET["req_id"]); ?>
+    <?php
+    if ($_GET["action_type"] == "edit") {
+        $req = find_req_by_id($_GET["req_id"]);
+    } else {
+        $req["badge_id"] = $_GET["badge_id"];
+        //$req["category_id"] = $_GET["category_id"];
+        $req["req_id"] = 0;
+    }
+    ?>
     <input type="hidden" name="category_id" value="<?php echo $_GET["category_id"]; ?>">
     <input type="hidden" name="req_id" value="<?php echo $req["req_id"]; ?>">
     <div class="form-group">

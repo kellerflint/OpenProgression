@@ -24,8 +24,14 @@ if (request_is_post()) {
         }
         $url .= "category_id=" . $_POST["category_id"] . $id;
     } else if (isset($_POST["req_name"])) {
-        update_req($_POST["req_id"], $_POST["req_name"], $_POST["req_text"], $_POST["badge_id"], $_POST["req_link"]);
-        $url .= "category_id=" . $_POST["category_id"] . "&badge_id=" . $_POST["badge_id"] . "&req_id=" . $_POST["req_id"];
+
+        if ($_POST["req_id"] == 0) {
+            create_req($_POST["badge_id"], $_POST["req_name"], $_POST["req_text"], $_POST["req_link"]);
+        } else {
+            update_req($_POST["req_id"], $_POST["req_name"], $_POST["req_text"], $_POST["badge_id"], $_POST["req_link"]);
+            $id = "&req_id=" . $_POST["req_id"];
+        }
+        $url .= "category_id=" . $_POST["category_id"] . "&badge_id=" . $_POST["badge_id"] . "&req_id=" . $id;
     }
     redirect_to("progression_edit.php" . $url);
 }
@@ -81,7 +87,7 @@ include_once '../../private/shared/default_header.php';
 
 <div class="forms">
     <?php
-    if (isset($_GET["badge_id"])) {
+    if (isset($_GET["badge_id"]) && $_GET["badge_id"] > 0) {
         echo "<h2 class=\"text-center\">Reqs</h2>";
         $req_set = find_reqs_by_badge_id($_GET["badge_id"]);
         while ($req = mysqli_fetch_assoc($req_set)) {
@@ -91,10 +97,18 @@ include_once '../../private/shared/default_header.php';
                 <input type="hidden" name="category_id" value="<?php echo $_GET["category_id"]; ?>">
                 <input type="hidden" name="badge_id" value="<?php echo $_GET["badge_id"]; ?>">
                 <input type="hidden" name="req_id" value="<?php echo $req["req_id"]; ?>">
+                <input type="hidden" name="action_type" value="edit">
                 <button type="submit" class="edit-badge btn btn-primary">Edit</button>
             </form>
-    <?php }
-    } ?>
+        <?php } ?>
+        <form action="progression_edit.php" class="badge-item border text-center" method="GET">
+            <input type="hidden" name="category_id" value="<?php echo $_GET["category_id"]; ?>">
+            <input type="hidden" name="badge_id" value="<?php echo $_GET["badge_id"]; ?>">
+            <input type="hidden" name="req_id" value="0">
+            <input type="hidden" name="action_type" value="create">
+            <button class="btn btn-secondary">Add Req</button>
+        </form>
+    <?php } ?>
 </div>
 
 <div class="edit-item">

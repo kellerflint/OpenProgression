@@ -496,3 +496,32 @@ function find_badge_order_max($category_id)
 
     return mysqli_fetch_assoc($max_set);
 }
+
+function create_req($badge_id, $name, $description, $link)
+{
+
+    global $db;
+
+    $max = find_req_order_max($badge_id)["max"] + 1;
+    $query = "INSERT INTO Req VALUES (DEFAULT, ?, ?, ?, ?, ?);";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("issii", $badge_id, $name, $description, $max, $link);
+    $result = $stmt->execute();
+    $stmt->close();
+}
+
+function find_req_order_max($badge_id)
+{
+    global $db;
+
+    $query = "SELECT MAX(req_order) AS max FROM Req WHERE badge_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $badge_id);
+    $result = $stmt->execute();
+    $max_set = $stmt->get_result();
+    $stmt->close();
+
+    return mysqli_fetch_assoc($max_set);
+}
