@@ -21,8 +21,8 @@ edit_progression:
 [DONE] remove req
 [DONE] remove badge
 [DONE] remove category
-preserve location on form submit for removals
-preserve location on create new item
+[DONE] preserve location on form submit for removals
+[DONE] preserve location on create new item
 move up/down buttons and functionallity for each category
 move up/down buttons and functionallity for each badge
 move up/down buttons and functionallity for each requirement

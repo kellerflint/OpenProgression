@@ -14,8 +14,10 @@ if (request_is_post()) {
             remove_category($_POST["category_id"]);
         } else if (isset($_POST["badge_name"])) {
             remove_badge($_POST["badge_id"]);
+            $url .= "category_id=" . $_POST["category_id"];
         } else if (isset($_POST["req_name"])) {
             remove_req($_POST["req_id"]);
+            $url .= "category_id=" . $_POST["category_id"] . "&badge_id=" . $_POST["badge_id"];;
         }
     } else {
         // if category was target create or update category depending on if valid id passed
@@ -55,7 +57,7 @@ if (request_is_post()) {
     }
 
     // sets GET url for all selected items
-    // FLAG redirect_to("progression_edit.php" . $url);
+    redirect_to("progression_edit.php" . $url);
 }
 
 include_once '../../private/shared/default_header.php';
