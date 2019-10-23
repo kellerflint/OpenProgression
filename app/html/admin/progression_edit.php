@@ -6,33 +6,47 @@ $style = "/style/progression_edit.css";
 $url = "?";
 
 if (request_is_post()) {
-    if (isset($_POST["category_name"])) {
-        $id = "";
-        if ($_POST["category_id"] == 0) {
-            create_category($_POST["category_name"], $_POST["category_description"], $_SESSION["session_id"]);
-        } else {
-            update_category($_POST["category_id"], $_POST["category_name"], $_POST["category_description"]);
-            $id = $_POST["category_id"];
+    // if clicked the remove submit button
+    if (isset($_POST["remove"])) {
+        remove_req($_POST["req_id"]);
+    } else {
+        // if category was target create or update category depending on if valid id passed
+        if (isset($_POST["category_name"])) {
+            $id = "";
+            if ($_POST["category_id"] == 0) {
+                create_category($_POST["category_name"], $_POST["category_description"], $_SESSION["session_id"]);
+            } else {
+                update_category($_POST["category_id"], $_POST["category_name"], $_POST["category_description"]);
+                $id = $_POST["category_id"];
+            }
+            // building url for GET
+            $url .= "category_id=" . $id;
+            // if badge was target create or update badge depending on if valid id passed
+        } else if (isset($_POST["badge_name"])) {
+            $id = "";
+            if ($_POST["badge_id"] == 0) {
+                create_badge($_POST["category_id"], $_POST["badge_name"], $_POST["badge_description"], $_POST["badge_experience"], $_POST["badge_prereq_id"]);
+            } else {
+                update_badge($_POST["badge_id"], $_POST["badge_name"], $_POST["badge_description"], $_POST["badge_prereq_id"], $_POST["category_id"], $_POST["badge_experience"]);
+                $id = "&badge_id=" . $_POST["badge_id"];
+            }
+            // building url for GET
+            $url .= "category_id=" . $_POST["category_id"] . $id;
+            // if req was target create or update req depending on if valid id passed
+        } else if (isset($_POST["req_name"])) {
+            $id = "";
+            if ($_POST["req_id"] == 0) {
+                create_req($_POST["badge_id"], $_POST["req_name"], $_POST["req_text"], $_POST["req_link"]);
+            } else {
+                update_req($_POST["req_id"], $_POST["req_name"], $_POST["req_text"], $_POST["badge_id"], $_POST["req_link"]);
+                $id = "&req_id=" . $_POST["req_id"];
+            }
+            // building url for GET
+            $url .= "category_id=" . $_POST["category_id"] . "&badge_id=" . $_POST["badge_id"] . "&req_id=" . $id;
         }
-        $url .= "category_id=" . $id;
-    } else if (isset($_POST["badge_name"])) {
-        if ($_POST["badge_id"] == 0) {
-            create_badge($_POST["category_id"], $_POST["badge_name"], $_POST["badge_description"], $_POST["badge_experience"], $_POST["badge_prereq_id"]);
-        } else {
-            update_badge($_POST["badge_id"], $_POST["badge_name"], $_POST["badge_description"], $_POST["badge_prereq_id"], $_POST["category_id"], $_POST["badge_experience"]);
-            $id = "&badge_id=" . $_POST["badge_id"];
-        }
-        $url .= "category_id=" . $_POST["category_id"] . $id;
-    } else if (isset($_POST["req_name"])) {
-
-        if ($_POST["req_id"] == 0) {
-            create_req($_POST["badge_id"], $_POST["req_name"], $_POST["req_text"], $_POST["req_link"]);
-        } else {
-            update_req($_POST["req_id"], $_POST["req_name"], $_POST["req_text"], $_POST["badge_id"], $_POST["req_link"]);
-            $id = "&req_id=" . $_POST["req_id"];
-        }
-        $url .= "category_id=" . $_POST["category_id"] . "&badge_id=" . $_POST["badge_id"] . "&req_id=" . $id;
     }
+
+    // sets GET url for all selected items
     redirect_to("progression_edit.php" . $url);
 }
 

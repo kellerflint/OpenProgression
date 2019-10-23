@@ -18,9 +18,9 @@ edit_progression:
 [DONE] add new category
 [DONE] add new badge
 [DONE] add new req
-remove category
-remove badge
 remove req
+remove badge
+remove category
 move up/down buttons and functionallity for each category
 move up/down buttons and functionallity for each badge
 move up/down buttons and functionallity for each requirement

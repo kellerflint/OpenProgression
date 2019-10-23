@@ -525,3 +525,71 @@ function find_req_order_max($badge_id)
 
     return mysqli_fetch_assoc($max_set);
 }
+
+function remove_req($req_id)
+{
+    global $db;
+
+    remove_user_req($req_id);
+
+    $query = "DELETE FROM Req WHERE req_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $req_id);
+    $result = $stmt->execute();
+    $stmt->close();
+
+    return $result;
+}
+
+// remove item from User_Req talbe
+function remove_user_req($req_id)
+{
+    global $db;
+
+    $query = "DELETE FROM User_Req WHERE req_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $req_id);
+    $result = $stmt->execute();
+    $stmt->close();
+
+    return $result;
+}
+
+function remove_badge($badge_id)
+{
+    global $db;
+
+    // removing all reqs from badge
+    $req_set = find_reqs_by_badge_id($badge_id);
+    while ($req = mysqli_fetch_assoc($req_set)) {
+        remove_user_req($req["req_id"]);
+        remove_req($req["req_id"]);
+    }
+
+    remove_user_badge($badge_id);
+
+    $query = "DELETE FROM Req WHERE req_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $req_id);
+    $result = $stmt->execute();
+    $stmt->close();
+
+    return $result;
+}
+
+function remove_user_badge($badge_id)
+{
+    global $db;
+
+    $query = "DELETE FROM User_Req WHERE req_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $req_id);
+    $result = $stmt->execute();
+    $stmt->close();
+
+    return $result;
+}

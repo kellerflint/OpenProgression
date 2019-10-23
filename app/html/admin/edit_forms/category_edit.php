@@ -18,5 +18,6 @@
         <label for="category-description">Description</label>
         <textarea class="form-control" id="category-description" name="category_description" rows="3"><?php echo $category["category_description"]; ?></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+    <button type="submit" class="btn btn-danger" name="remove">Remove</button>
 </form>
