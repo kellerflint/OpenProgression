@@ -53,6 +53,6 @@
             <?php } ?>
         </select>
     </div>
-    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-    <button type="submit" class="btn btn-danger" name="remove">Remove</button>
+    <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
+    <button type="submit" class="btn btn-danger" name="remove" value="remove">Remove</button>
 </form>

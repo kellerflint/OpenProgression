@@ -593,3 +593,24 @@ function remove_user_badge($badge_id)
 
     return $result;
 }
+
+function remove_category($category_id)
+{
+    global $db;
+
+    // removing all badges from category
+    $badge_set = find_badges_by_category($category_id);
+    while ($badge = mysqli_fetch_assoc($badge_set)) {
+        remove_user_badge($badge["badge_id"]);
+        remove_badge($badge["badge_id"]);
+    }
+
+    $query = "DELETE FROM Category WHERE category_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $category_id);
+    $result = $stmt->execute();
+    $stmt->close();
+
+    return $result;
+}

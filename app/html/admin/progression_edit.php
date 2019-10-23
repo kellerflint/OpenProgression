@@ -11,7 +11,7 @@ if (request_is_post()) {
     if (isset($_POST["remove"])) {
 
         if (isset($_POST["category_name"])) {
-            //todo
+            remove_category($_POST["category_id"]);
         } else if (isset($_POST["badge_name"])) {
             remove_badge($_POST["badge_id"]);
         } else if (isset($_POST["req_name"])) {
