@@ -570,10 +570,10 @@ function remove_badge($badge_id)
 
     remove_user_badge($badge_id);
 
-    $query = "DELETE FROM Req WHERE req_id = ?;";
+    $query = "DELETE FROM Badge WHERE badge_id = ?;";
 
     $stmt = $db->prepare($query);
-    $stmt->bind_param("i", $req_id);
+    $stmt->bind_param("i", $badge_id);
     $result = $stmt->execute();
     $stmt->close();
 
@@ -584,10 +584,10 @@ function remove_user_badge($badge_id)
 {
     global $db;
 
-    $query = "DELETE FROM User_Req WHERE req_id = ?;";
+    $query = "DELETE FROM User_Badge WHERE badge_id = ?;";
 
     $stmt = $db->prepare($query);
-    $stmt->bind_param("i", $req_id);
+    $stmt->bind_param("i", $badge_id);
     $result = $stmt->execute();
     $stmt->close();
 

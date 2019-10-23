@@ -6,9 +6,17 @@ $style = "/style/progression_edit.css";
 $url = "?";
 
 if (request_is_post()) {
+
     // if clicked the remove submit button
     if (isset($_POST["remove"])) {
-        remove_req($_POST["req_id"]);
+
+        if (isset($_POST["category_name"])) {
+            //todo
+        } else if (isset($_POST["badge_name"])) {
+            remove_badge($_POST["badge_id"]);
+        } else if (isset($_POST["req_name"])) {
+            remove_req($_POST["req_id"]);
+        }
     } else {
         // if category was target create or update category depending on if valid id passed
         if (isset($_POST["category_name"])) {
@@ -47,7 +55,7 @@ if (request_is_post()) {
     }
 
     // sets GET url for all selected items
-    redirect_to("progression_edit.php" . $url);
+    // FLAG redirect_to("progression_edit.php" . $url);
 }
 
 include_once '../../private/shared/default_header.php';
