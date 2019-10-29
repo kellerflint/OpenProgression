@@ -1,0 +1,23 @@
+.forms {
+    margin: 1rem;
+    width: 20%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+form {
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.edit-item {
+    width: 30%;
+    margin-top: 1rem;
+    display:inline-block;
+    border: 1px solid lightgrey;
+}
+
+
+.selected {
+    background-color: lightblue;
+}

@@ -79,5 +79,5 @@ include_once '../../private/shared/default_header.php'; ?>
     <?php } ?>
 </div>
 
-<script src="<?php echo url_for('scripts/user_edit.js'); ?>"></script>
+<script src="<?php echo url_for('scripts/user_events.js'); ?>"></script>
 <?php include_once '../../private/shared/default_footer.php'; ?>

@@ -1,19 +1,10 @@
 TODO:
 
-edit_progression:
-abstracted edit item form, test with category, badges and reqs FIRST
-add categories list and on click of edit, bring up that category's fields in the edit item form
-submiting edits the category's data
-on click of category, bring up list of badges in that category
-on edit badge, bring up that badge's fields in edit item form
-submiting edits the badge's data
-on click of badge, bring up that badge's requirements, 
-on edit req, populate fields in edit item form
-submit edit req form edits req's data
-database update to track category order
-move up/down buttons and functionallity for each category
-move up/down buttons and functionallity for each badge
-move up/down buttons and functionallity for each requirement
+give_reqs:
+give admin ability to give user reqs
+
+give_badges:
+give admin ability to give users badges
 
 remove_user:
 add remove a user option
@@ -23,7 +14,35 @@ compile requirements and make design decisions
 
 Log:
 
-sessions:
+[MERGED] edit_progression:
+[DONE] database update to track category order
+[DONE] edit item form for category
+[DONE] add categories list and on click of edit, bring up that category's fields in the edit item form
+[DONE] submiting edits the category's data
+[DONE] edit item form for badge
+[DONE] on click of category, bring up list of badges in that category
+[DONE] on edit badge, bring up that badge's fields in edit item form
+[DONE] submiting edits the badge's data
+[DONE] basic styling
+[DONE] on click of badge, bring up that badge's requirements, 
+[DONE] edit item form for req
+[DONE] on edit req, populate fields in edit item form
+[DONE] submit edit req form edits req's data
+[DONE] preserve location on form submit
+[DONE] add new category
+[DONE] add new badge
+[DONE] add new req
+[DONE] remove req
+[DONE] remove badge
+[DONE] remove category
+[DONE] preserve location on form submit for removals
+[DONE] preserve location on create new item
+[DONE] move up/down buttons and functionallity for each category
+[DONE] move up/down buttons and functionallity for each badge
+[DONE] move up/down buttons and functionallity for each requirement
+
+
+[MERGED] sessions:
 [DONE] redo with bootstrap
 [DONE] add descriptions to sessions
 
