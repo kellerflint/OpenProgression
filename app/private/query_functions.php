@@ -556,6 +556,21 @@ function find_req_order_max($badge_id)
     return mysqli_fetch_assoc($max_set);
 }
 
+function find_req_order_min($badge_id)
+{
+    global $db;
+
+    $query = "SELECT MIN(req_order) AS min FROM Req WHERE badge_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $badge_id);
+    $result = $stmt->execute();
+    $min_set = $stmt->get_result();
+    $stmt->close();
+
+    return mysqli_fetch_assoc($min_set);
+}
+
 function remove_req($req_id)
 {
     global $db;
@@ -747,6 +762,63 @@ function switch_badge_order($id1, $order1, $id2, $order2)
     global $db;
 
     $query = "UPDATE Badge SET badge_order = ? WHERE badge_id = ?";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("ii", $order1, $id2);
+    $result = $stmt->execute();
+
+    $stmt->bind_param("ii", $order2, $id1);
+    $result = $stmt->execute();
+    $stmt->close();
+}
+
+
+
+// moves req order up or down
+// @param move: -1 for move order down, 1 for move order up
+function move_req($req_id, $move)
+{
+    global $db;
+
+    // find the current req
+    $req1 = find_req_by_id($req_id);
+    $current_order = $req1["req_order"];
+
+    // find id for req above/below it
+    $req2 = find_req_id_by_order($current_order + $move);
+
+    switch_req_order(
+        $req1["req_id"],
+        $req1["req_order"],
+        $req2["req_id"],
+        $req2["req_order"]
+    );
+}
+
+// returns req assoc found by the req order
+function find_req_id_by_order($order)
+{
+    global $db;
+
+    $query = "SELECT * FROM Req
+                WHERE req_order = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $order);
+    $result = $stmt->execute();
+
+    $req_set = $stmt->get_result();
+
+    $stmt->close();
+
+    return mysqli_fetch_assoc($req_set);
+}
+
+function switch_req_order($id1, $order1, $id2, $order2)
+{
+    global $db;
+
+    $query = "UPDATE Req SET req_order = ? WHERE req_id = ?";
 
     $stmt = $db->prepare($query);
     $stmt->bind_param("ii", $order1, $id2);

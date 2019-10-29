@@ -1,6 +1,20 @@
 TODO:
 
-edit_progression:
+give_reqs:
+give admin ability to give user reqs
+
+give_badges:
+give admin ability to give users badges
+
+remove_user:
+add remove a user option
+
+profiles:
+compile requirements and make design decisions
+
+Log:
+
+[MERGED] edit_progression:
 [DONE] database update to track category order
 [DONE] edit item form for category
 [DONE] add categories list and on click of edit, bring up that category's fields in the edit item form
@@ -25,17 +39,10 @@ edit_progression:
 [DONE] preserve location on create new item
 [DONE] move up/down buttons and functionallity for each category
 [DONE] move up/down buttons and functionallity for each badge
-move up/down buttons and functionallity for each requirement
+[DONE] move up/down buttons and functionallity for each requirement
 
-remove_user:
-add remove a user option
 
-profiles:
-compile requirements and make design decisions
-
-Log:
-
-sessions:
+[MERGED] sessions:
 [DONE] redo with bootstrap
 [DONE] add descriptions to sessions
 

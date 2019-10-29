@@ -42,4 +42,12 @@
     </div>
     <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
     <button type="submit" class="btn btn-danger" name="remove" value="remove">Remove</button>
+    <div class="float-right">
+        <?php if (find_req_order_max($req["badge_id"])["max"] != $req["req_order"]) { ?>
+            <button type="submit" class="btn btn-secondary" name="down" value="down">Down</button>
+        <?php }
+        if ((find_req_order_min($req["badge_id"])["min"] != $req["req_order"])) { ?>
+            <button type="submit" class="btn btn-secondary" name="up" value="up">Up</button>
+        <?php } ?>
+    </div>
 </form>

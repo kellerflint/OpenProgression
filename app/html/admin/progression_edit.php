@@ -60,6 +60,9 @@ if (request_is_post()) {
         } else if (isset($_POST["badge_name"])) {
             $url .= "category_id=" . $_POST["category_id"];
             move_badge($_POST["badge_id"], -1);
+        } else if (isset($_POST["req_name"])) {
+            $url .= "category_id=" . $_POST["category_id"] . "&badge_id=" . $_POST["badge_id"];
+            move_req($_POST["req_id"], -1);
         }
         // move item down
     } else if (isset($_POST["down"])) {
@@ -68,6 +71,9 @@ if (request_is_post()) {
         } else if (isset($_POST["badge_name"])) {
             $url .= "category_id=" . $_POST["category_id"];
             move_badge($_POST["badge_id"], 1);
+        } else if (isset($_POST["req_name"])) {
+            $url .= "category_id=" . $_POST["category_id"] . "&badge_id=" . $_POST["badge_id"];
+            move_req($_POST["req_id"], 1);
         }
     }
 
