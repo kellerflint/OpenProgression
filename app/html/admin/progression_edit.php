@@ -16,7 +16,7 @@ if (request_is_post()) {
             $url .= "category_id=" . $_POST["category_id"];
         } else if (isset($_POST["req_name"])) {
             remove_req($_POST["req_id"]);
-            $url .= "category_id=" . $_POST["category_id"] . "&badge_id=" . $_POST["badge_id"];;
+            $url .= "category_id=" . $_POST["category_id"] . "&badge_id=" . $_POST["badge_id"];
         }
     } else if (isset($_POST["submit"])) {
         // if category was target create or update category depending on if valid id passed
@@ -53,10 +53,22 @@ if (request_is_post()) {
             // building url for GET
             $url .= "category_id=" . $_POST["category_id"] . "&badge_id=" . $_POST["badge_id"] . "&req_id=" . $id;
         }
+        // move item up
     } else if (isset($_POST["up"])) {
-        move_category($_POST["category_id"], -1);
+        if (isset($_POST["category_name"])) {
+            move_category($_POST["category_id"], -1);
+        } else if (isset($_POST["badge_name"])) {
+            $url .= "category_id=" . $_POST["category_id"];
+            move_badge($_POST["badge_id"], -1);
+        }
+        // move item down
     } else if (isset($_POST["down"])) {
-        move_category($_POST["category_id"], 1);
+        if (isset($_POST["category_name"])) {
+            move_category($_POST["category_id"], 1);
+        } else if (isset($_POST["badge_name"])) {
+            $url .= "category_id=" . $_POST["category_id"];
+            move_badge($_POST["badge_id"], 1);
+        }
     }
 
     // sets GET url for all selected items

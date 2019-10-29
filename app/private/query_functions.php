@@ -512,6 +512,21 @@ function find_badge_order_max($category_id)
     return mysqli_fetch_assoc($max_set);
 }
 
+function find_badge_order_min($category_id)
+{
+    global $db;
+
+    $query = "SELECT MIN(badge_order) AS min FROM Badge WHERE category_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $category_id);
+    $result = $stmt->execute();
+    $min_set = $stmt->get_result();
+    $stmt->close();
+
+    return mysqli_fetch_assoc($min_set);
+}
+
 function create_req($badge_id, $name, $description, $link)
 {
 
@@ -676,6 +691,62 @@ function switch_category_order($id1, $order1, $id2, $order2)
     global $db;
 
     $query = "UPDATE Category SET category_order = ? WHERE category_id = ?";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("ii", $order1, $id2);
+    $result = $stmt->execute();
+
+    $stmt->bind_param("ii", $order2, $id1);
+    $result = $stmt->execute();
+    $stmt->close();
+}
+
+
+// moves badge order up or down
+// @param move: -1 for move order down, 1 for move order up
+function move_badge($badge_id, $move)
+{
+    global $db;
+
+    // find the current badge
+    $badge1 = find_badge_by_id($badge_id);
+    $current_order = $badge1["badge_order"];
+
+    // find id for badge above/below it
+    $badge2 = find_badge_id_by_order($current_order + $move);
+
+    switch_badge_order(
+        $badge1["badge_id"],
+        $badge1["badge_order"],
+        $badge2["badge_id"],
+        $badge2["badge_order"]
+    );
+}
+
+// returns badge assoc found by the badge order
+function find_badge_id_by_order($order)
+{
+    global $db;
+
+    $query = "SELECT * FROM Badge
+                WHERE badge_order = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $order);
+    $result = $stmt->execute();
+
+    $badge_set = $stmt->get_result();
+
+    $stmt->close();
+
+    return mysqli_fetch_assoc($badge_set);
+}
+
+function switch_badge_order($id1, $order1, $id2, $order2)
+{
+    global $db;
+
+    $query = "UPDATE Badge SET badge_order = ? WHERE badge_id = ?";
 
     $stmt = $db->prepare($query);
     $stmt->bind_param("ii", $order1, $id2);

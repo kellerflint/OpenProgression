@@ -55,4 +55,12 @@
     </div>
     <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
     <button type="submit" class="btn btn-danger" name="remove" value="remove">Remove</button>
+    <div class="float-right">
+        <?php if (find_badge_order_max($badge["category_id"])["max"] != $badge["badge_order"]) { ?>
+            <button type="submit" class="btn btn-secondary" name="down" value="down">Down</button>
+        <?php }
+        if ((find_badge_order_min($badge["category_id"])["min"] != $badge["badge_order"])) { ?>
+            <button type="submit" class="btn btn-secondary" name="up" value="up">Up</button>
+        <?php } ?>
+    </div>
 </form>

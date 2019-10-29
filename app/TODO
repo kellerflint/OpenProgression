@@ -23,8 +23,8 @@ edit_progression:
 [DONE] remove category
 [DONE] preserve location on form submit for removals
 [DONE] preserve location on create new item
-move up/down buttons and functionallity for each category
-move up/down buttons and functionallity for each badge
+[DONE] move up/down buttons and functionallity for each category
+[DONE] move up/down buttons and functionallity for each badge
 move up/down buttons and functionallity for each requirement
 
 remove_user:
