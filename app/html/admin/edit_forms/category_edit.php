@@ -20,4 +20,12 @@
     </div>
     <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
     <button type="submit" class="btn btn-danger" name="remove" value="remove">Remove</button>
+    <div class="float-right">
+        <?php if (find_category_order_max()["max"] != $category["category_order"]) { ?>
+            <button type="submit" class="btn btn-secondary" name="down" value="down">Down</button>
+        <?php }
+        if ((find_category_order_min()["min"] != $category["category_order"])) { ?>
+            <button type="submit" class="btn btn-secondary" name="up" value="up">Up</button>
+        <?php } ?>
+    </div>
 </form>

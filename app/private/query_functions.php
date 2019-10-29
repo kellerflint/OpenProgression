@@ -155,7 +155,8 @@ function find_session_categories($session_id)
     global $db;
 
     $query = "SELECT * FROM Category
-                WHERE session_id = ?;";
+                WHERE session_id = ?
+                ORDER BY category_order ASC;";
 
     $stmt = $db->prepare($query);
     $stmt->bind_param("i", $session_id);
@@ -464,6 +465,20 @@ function find_category_order_max()
     return mysqli_fetch_assoc($max_set);
 }
 
+function find_category_order_min()
+{
+    global $db;
+
+    $query = "SELECT MIN(category_order) AS min FROM Category";
+
+    $stmt = $db->prepare($query);
+    $result = $stmt->execute();
+    $min_set = $stmt->get_result();
+    $stmt->close();
+
+    return mysqli_fetch_assoc($min_set);
+}
+
 function create_badge($category_id, $name, $description, $experience, $prereq_id)
 {
 
@@ -613,4 +628,60 @@ function remove_category($category_id)
     $stmt->close();
 
     return $result;
+}
+
+
+// moves cateogry order up or down
+// @param move: -1 for move order down, 1 for move order up
+function move_category($category_id, $move)
+{
+    global $db;
+
+    // find the current category
+    $category1 = find_category_by_id($category_id);
+    $current_order = $category1["category_order"];
+
+    // find id for category above/below it
+    $category2 = find_category_id_by_order($current_order + $move);
+
+    switch_category_order(
+        $category1["category_id"],
+        $category1["category_order"],
+        $category2["category_id"],
+        $category2["category_order"]
+    );
+}
+
+// returns category assoc found by the category order
+function find_category_id_by_order($order)
+{
+    global $db;
+
+    $query = "SELECT * FROM Category
+                WHERE category_order = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $order);
+    $result = $stmt->execute();
+
+    $category_set = $stmt->get_result();
+
+    $stmt->close();
+
+    return mysqli_fetch_assoc($category_set);
+}
+
+function switch_category_order($id1, $order1, $id2, $order2)
+{
+    global $db;
+
+    $query = "UPDATE Category SET category_order = ? WHERE category_id = ?";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("ii", $order1, $id2);
+    $result = $stmt->execute();
+
+    $stmt->bind_param("ii", $order2, $id1);
+    $result = $stmt->execute();
+    $stmt->close();
 }
