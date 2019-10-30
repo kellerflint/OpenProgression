@@ -1,7 +1,12 @@
 TODO:
 
-remove_user:
-[DONE] add remove a user option
+BUGS:
+changing order of badges and reqs when added from scratch fails
+categories switch order with other session's categories
+blank edit form still appears even when no specific item is selected.
+
+change_sessions:
+add and remove sessions
 
 profiles:
 compile requirements and make design decisions
@@ -14,7 +19,10 @@ leaderboard:
 leaderboard that links to profiles where everyone can see what other people have done
 make searchable for completion of certain badges to ask for help?
 
-Log:
+LOG:
+
+[MERGED] remove_user:
+[DONE] add remove a user option
 
 [MERGED] give_reqs:
 [DONE] give admin ability to give user reqs

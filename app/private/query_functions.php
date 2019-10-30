@@ -441,7 +441,7 @@ function create_category($name, $description, $session_id)
 {
     global $db;
 
-    $max = find_category_order_max()["max"] + 1;
+    $max = find_category_order_max($session_id)["max"] + 1;
 
     $query = "INSERT INTO Category VALUES (DEFAULT, ?, ?, ?, ?);";
 
@@ -451,13 +451,14 @@ function create_category($name, $description, $session_id)
     $stmt->close();
 }
 
-function find_category_order_max()
+function find_category_order_max($session_id)
 {
     global $db;
 
-    $query = "SELECT MAX(category_order) AS max FROM Category";
+    $query = "SELECT MAX(category_order) AS max FROM Category WHERE session_id = ?;";
 
     $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $session_id);
     $result = $stmt->execute();
     $max_set = $stmt->get_result();
     $stmt->close();
@@ -465,13 +466,14 @@ function find_category_order_max()
     return mysqli_fetch_assoc($max_set);
 }
 
-function find_category_order_min()
+function find_category_order_min($session_id)
 {
     global $db;
 
-    $query = "SELECT MIN(category_order) AS min FROM Category";
+    $query = "SELECT MIN(category_order) AS min FROM Category WHERE session_id = ?;";
 
     $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $session_id);
     $result = $stmt->execute();
     $min_set = $stmt->get_result();
     $stmt->close();
