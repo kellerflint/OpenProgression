@@ -832,7 +832,7 @@ function switch_req_order($id1, $order1, $id2, $order2)
 function update_user_reqs($user_id, $badge_id, $new_req_ids)
 {
     remove_user_badge_reqs($badge_id, $user_id);
-    remove_user_badge_by_user($badge_id, $user_id);
+    remove_user_badge_by_user_badge($badge_id, $user_id);
 
     if (empty($new_req_ids)) {
         return;
@@ -853,11 +853,11 @@ function remove_user_badge_reqs($badge_id, $user_id)
     // removing all badges reqs from user_reqs
     $req_set = find_reqs_by_badge_id($badge_id);
     while ($req = mysqli_fetch_assoc($req_set)) {
-        remove_user_req_by_user($req["req_id"], $user_id);
+        remove_user_req_by_user_req($req["req_id"], $user_id);
     }
 }
 
-function remove_user_req_by_user($req_id, $user_id)
+function remove_user_req_by_user_req($req_id, $user_id)
 {
     global $db;
 
@@ -899,7 +899,7 @@ function give_user_badge($badge_id, $user_id)
     return $result;
 }
 
-function remove_user_badge_by_user($badge_id, $user_id)
+function remove_user_badge_by_user_badge($badge_id, $user_id)
 {
     global $db;
 
@@ -907,6 +907,71 @@ function remove_user_badge_by_user($badge_id, $user_id)
 
     $stmt = $db->prepare($query);
     $stmt->bind_param("ii", $badge_id, $user_id);
+    $result = $stmt->execute();
+    $stmt->close();
+
+    return $result;
+}
+
+function remove_user($user_id)
+{
+    remove_user_req_by_user($user_id);
+    remove_user_badge_by_user($user_id);
+    remove_user_session_by_user($user_id);
+    remove_user_by_id($user_id);
+}
+
+function remove_user_req_by_user($user_id)
+{
+    global $db;
+
+    $query = "DELETE FROM User_Req WHERE user_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $user_id);
+    $result = $stmt->execute();
+    $stmt->close();
+
+    return $result;
+}
+
+
+function remove_user_badge_by_user($user_id)
+{
+    global $db;
+
+    $query = "DELETE FROM User_Badge WHERE user_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $user_id);
+    $result = $stmt->execute();
+    $stmt->close();
+
+    return $result;
+}
+
+function remove_user_session_by_user($user_id)
+{
+    global $db;
+
+    $query = "DELETE FROM User_Session WHERE user_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $user_id);
+    $result = $stmt->execute();
+    $stmt->close();
+
+    return $result;
+}
+
+function remove_user_by_id($user_id)
+{
+    global $db;
+
+    $query = "DELETE FROM User WHERE user_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $user_id);
     $result = $stmt->execute();
     $stmt->close();
 
