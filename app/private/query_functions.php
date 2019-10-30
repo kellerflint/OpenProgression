@@ -441,7 +441,7 @@ function create_category($name, $description, $session_id)
 {
     global $db;
 
-    $max = find_category_order_max()["max"] + 1;
+    $max = find_category_order_max($session_id)["max"] + 1;
 
     $query = "INSERT INTO Category VALUES (DEFAULT, ?, ?, ?, ?);";
 
@@ -451,13 +451,14 @@ function create_category($name, $description, $session_id)
     $stmt->close();
 }
 
-function find_category_order_max()
+function find_category_order_max($session_id)
 {
     global $db;
 
-    $query = "SELECT MAX(category_order) AS max FROM Category";
+    $query = "SELECT MAX(category_order) AS max FROM Category WHERE session_id = ?;";
 
     $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $session_id);
     $result = $stmt->execute();
     $max_set = $stmt->get_result();
     $stmt->close();
@@ -465,13 +466,14 @@ function find_category_order_max()
     return mysqli_fetch_assoc($max_set);
 }
 
-function find_category_order_min()
+function find_category_order_min($session_id)
 {
     global $db;
 
-    $query = "SELECT MIN(category_order) AS min FROM Category";
+    $query = "SELECT MIN(category_order) AS min FROM Category WHERE session_id = ?;";
 
     $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $session_id);
     $result = $stmt->execute();
     $min_set = $stmt->get_result();
     $stmt->close();
@@ -662,17 +664,15 @@ function remove_category($category_id)
 
 
 // moves cateogry order up or down
-// @param move: -1 for move order down, 1 for move order up
+// @param move: 1 for move order down, -1 for move order up
 function move_category($category_id, $move)
 {
-    global $db;
-
     // find the current category
     $category1 = find_category_by_id($category_id);
     $current_order = $category1["category_order"];
 
     // find id for category above/below it
-    $category2 = find_category_id_by_order($current_order + $move);
+    $category2 = find_category_id_by_order_session($current_order + $move, $category1["session_id"]);
 
     switch_category_order(
         $category1["category_id"],
@@ -683,15 +683,15 @@ function move_category($category_id, $move)
 }
 
 // returns category assoc found by the category order
-function find_category_id_by_order($order)
+function find_category_id_by_order_session($order, $session_id)
 {
     global $db;
 
     $query = "SELECT * FROM Category
-                WHERE category_order = ?;";
+                WHERE category_order = ? AND session_id = ?;";
 
     $stmt = $db->prepare($query);
-    $stmt->bind_param("i", $order);
+    $stmt->bind_param("ii", $order, $session_id);
     $result = $stmt->execute();
 
     $category_set = $stmt->get_result();
@@ -728,7 +728,7 @@ function move_badge($badge_id, $move)
     $current_order = $badge1["badge_order"];
 
     // find id for badge above/below it
-    $badge2 = find_badge_id_by_order($current_order + $move);
+    $badge2 = find_badge_id_by_order_category($current_order + $move, $badge1["category_id"]);
 
     switch_badge_order(
         $badge1["badge_id"],
@@ -739,15 +739,15 @@ function move_badge($badge_id, $move)
 }
 
 // returns badge assoc found by the badge order
-function find_badge_id_by_order($order)
+function find_badge_id_by_order_category($order, $category_id)
 {
     global $db;
 
     $query = "SELECT * FROM Badge
-                WHERE badge_order = ?;";
+                WHERE badge_order = ? AND category_id = ?;";
 
     $stmt = $db->prepare($query);
-    $stmt->bind_param("i", $order);
+    $stmt->bind_param("ii", $order, $category_id);
     $result = $stmt->execute();
 
     $badge_set = $stmt->get_result();
@@ -785,7 +785,7 @@ function move_req($req_id, $move)
     $current_order = $req1["req_order"];
 
     // find id for req above/below it
-    $req2 = find_req_id_by_order($current_order + $move);
+    $req2 = find_req_id_by_order_badge($current_order + $move, $req1["badge_id"]);
 
     switch_req_order(
         $req1["req_id"],
@@ -796,15 +796,15 @@ function move_req($req_id, $move)
 }
 
 // returns req assoc found by the req order
-function find_req_id_by_order($order)
+function find_req_id_by_order_badge($order, $badge_id)
 {
     global $db;
 
     $query = "SELECT * FROM Req
-                WHERE req_order = ?;";
+                WHERE req_order = ? AND badge_id = ?;";
 
     $stmt = $db->prepare($query);
-    $stmt->bind_param("i", $order);
+    $stmt->bind_param("ii", $order, $badge_id);
     $result = $stmt->execute();
 
     $req_set = $stmt->get_result();
