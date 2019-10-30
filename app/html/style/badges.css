@@ -112,6 +112,26 @@ h3 {
     filter: grayscale(100%);
 }
 
+/* Admin styles */
+button {
+    width: 90px;
+}
+
+form {
+    margin: 1rem;
+    text-align: left;
+}
+
+form > button {
+    width: 200px;
+    height: 50px;
+}
+
+.form-check-input {
+    margin-top: 20px;
+    transform: scale(2);
+}
+
 /* keyframes */
 
 @keyframes glow_gold {

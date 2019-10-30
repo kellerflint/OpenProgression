@@ -65,9 +65,12 @@ function build_badge($badge)
         <div class="reqs hide">
             <?php
                 $req_set = find_badge_reqs($_SESSION['user_id'], $badge['badge_id']);
+                echo "<form action=\"badges.php\" method=\"POST\">";
+                echo "<input type=\"hidden\" name=\"\" value=\"{$badge["badge_id"]}\">";
                 while ($req = mysqli_fetch_assoc($req_set)) {
                     add_req($req);
                 }
+                echo "</form>";
                 ?>
         </div>
     </div>
@@ -78,6 +81,18 @@ function add_req($req)
 {
     ?>
     <div class="req">
+        <?php if ($_SESSION["permission"] == ADM) {
+                if ($req['has_req'] == "true") {
+                    ?>
+                <input class="form-check-input" type="checkbox" name="reqs[]" value="<?php echo $req["req_id"]; ?>" checked>
+            <?php
+                    } else {
+                        ?>
+                <input class="form-check-input" type="checkbox" name="reqs[]" value="<?php echo $req["req_id"]; ?>">
+        <?php
+                }
+            }
+            ?>
         <img class="req-image" src="
         <?php
             if ($req['has_req'] == "true") {
