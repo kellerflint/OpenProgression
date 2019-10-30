@@ -23,6 +23,8 @@ if (request_is_post() && $_POST['add'] == "add") {
     $username = $user["user_name"];
 } else if (request_is_post() && $_POST['apply'] == "apply") {
     update_user($_POST["id"], $_POST["name"], $_POST["nickname"], $_POST["password"]);
+} else if (request_is_post() && $_POST["remove"] == "remove") {
+    remove_user($_POST["id"]);
 }
 
 include_once '../../private/shared/default_header.php'; ?>
@@ -74,6 +76,7 @@ include_once '../../private/shared/default_header.php'; ?>
                 <input type="text" class="form-control" id="password" name="password" value="<?php echo $password; ?>">
             </div>
             <button type="submit" class="btn btn-primary" name="apply" value="apply">Apply Changes</button>
+            <button type="submit" class="btn btn-danger" name="remove" value="remove">Remove User</button>
             <button type="button" class="btn btn-secondary" id="copy-info">Copy User Info</button>
         </form>
     <?php } ?>
