@@ -1,8 +1,9 @@
 // Selecting different badges
+let image_links = document.getElementsByClassName("badge-image");
 let badge_divs = document.getElementsByClassName("badge");
 
-for (let i = 0; i < badge_divs.length; i++) {
-    badge_divs[i].addEventListener("click", function () {
+for (let i = 0; i < image_links.length; i++) {
+    image_links[i].addEventListener("click", function () {
         if (badge_divs[i].classList.contains("active")) {
             badge_divs[i].classList.add("inactive");
             badge_divs[i].classList.remove("active");
@@ -56,3 +57,23 @@ for (let j = 0; j < badge_divs.length; j++) {
         badge_divs[j].classList.remove("visible");
     }
 }
+
+// Admin view functions
+
+let user_id_inputs = document.getElementsByClassName("user-input-hidden");
+
+if (user_id_inputs == undefined || user_id_inputs.length < 1) {
+    console.log("non-admin access");
+} else {
+    let user_select = document.getElementById("user-select");
+    document.getElementById("user-select").addEventListener("change", function () {
+        for (let i = 0; i < user_id_inputs.length; i++) {
+            console.log("changed input at " + i + " to " + user_select.value);
+            user_id_inputs[i].value = user_select.value;
+        }
+    });
+}
+
+document.getElementById("user-select").addEventListener("change", function () {
+    this.form.submit();
+});

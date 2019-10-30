@@ -81,6 +81,10 @@ h3 {
     text-align: left;
 }
 
+.req {
+    margin-top: 10px;
+}
+
 .req-image {
     vertical-align: middle;
     width: 25px;
@@ -113,18 +117,23 @@ h3 {
 }
 
 /* Admin styles */
-button {
-    width: 90px;
-}
-
 form {
-    margin: 1rem;
     text-align: left;
 }
 
 form > button {
-    width: 200px;
-    height: 50px;
+    margin-top: 10px;
+    width: 100px;
+}
+
+label {
+    font-size: 1.8rem;
+}
+
+#get-user {
+    margin-left: 30%;
+    text-align: center;
+    max-width: 40%;
 }
 
 .form-check-input {
