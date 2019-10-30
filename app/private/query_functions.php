@@ -828,3 +828,87 @@ function switch_req_order($id1, $order1, $id2, $order2)
     $result = $stmt->execute();
     $stmt->close();
 }
+
+function update_user_reqs($user_id, $badge_id, $new_req_ids)
+{
+    remove_user_badge_reqs($badge_id, $user_id);
+    remove_user_badge_by_user($badge_id, $user_id);
+
+    if (empty($new_req_ids)) {
+        return;
+    }
+
+    foreach ($new_req_ids as $req_id) {
+        give_user_req($req_id, $user_id);
+        if (find_req_by_id($req_id)["req_order"] == find_req_order_max($badge_id)["max"]) {
+            give_user_badge($badge_id, $user_id);
+        }
+    }
+}
+
+function remove_user_badge_reqs($badge_id, $user_id)
+{
+    global $db;
+
+    // removing all badges reqs from user_reqs
+    $req_set = find_reqs_by_badge_id($badge_id);
+    while ($req = mysqli_fetch_assoc($req_set)) {
+        remove_user_req_by_user($req["req_id"], $user_id);
+    }
+}
+
+function remove_user_req_by_user($req_id, $user_id)
+{
+    global $db;
+
+    $query = "DELETE FROM User_Req WHERE req_id = ? AND user_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("ii", $req_id, $user_id);
+    $result = $stmt->execute();
+    $stmt->close();
+
+    return $result;
+}
+
+function give_user_req($req_id, $user_id)
+{
+    global $db;
+
+    $query = "INSERT INTO User_Req VALUES (?, ?, NOW())";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("ii", $user_id, $req_id);
+    $result = $stmt->execute();
+    $stmt->close();
+
+    return $result;
+}
+
+function give_user_badge($badge_id, $user_id)
+{
+    global $db;
+
+    $query = "INSERT INTO User_Badge VALUES (?, ?, NOW())";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("ii", $user_id, $badge_id);
+    $result = $stmt->execute();
+    $stmt->close();
+
+    return $result;
+}
+
+function remove_user_badge_by_user($badge_id, $user_id)
+{
+    global $db;
+
+    $query = "DELETE FROM User_Badge WHERE badge_id = ? AND user_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("ii", $badge_id, $user_id);
+    $result = $stmt->execute();
+    $stmt->close();
+
+    return $result;
+}

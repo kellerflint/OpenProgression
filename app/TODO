@@ -1,16 +1,22 @@
 TODO:
 
 give_reqs:
-give admin ability to give user reqs
-
-give_badges:
-give admin ability to give users badges
+[DONE] give admin ability to give user reqs
+[DONE] give badges on completion of last req item
 
 remove_user:
 add remove a user option
 
 profiles:
 compile requirements and make design decisions
+
+ranks:
+implement ranks with xp calculated from badges and reqs
+add rank images
+
+leaderboard:
+leaderboard that links to profiles where everyone can see what other people have done
+make searchable for completion of certain badges to ask for help?
 
 Log:
 
