@@ -1,8 +1,8 @@
 TODO:
 
 BUGS:
-changing order of badges and reqs when added from scratch fails
-categories switch order with other session's categories
+[DONE] changing order of badges and reqs when added from scratch fails
+[DONE] categories switch order with other session's categories
 blank edit form still appears even when no specific item is selected.
 
 change_sessions:
