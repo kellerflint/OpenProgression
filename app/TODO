@@ -1,9 +1,5 @@
 TODO:
 
-give_reqs:
-[DONE] give admin ability to give user reqs
-[DONE] give badges on completion of last req item
-
 remove_user:
 add remove a user option
 
@@ -19,6 +15,10 @@ leaderboard that links to profiles where everyone can see what other people have
 make searchable for completion of certain badges to ask for help?
 
 Log:
+
+[MERGED] give_reqs:
+[DONE] give admin ability to give user reqs
+[DONE] give badges on completion of last req item
 
 [MERGED] edit_progression:
 [DONE] database update to track category order
