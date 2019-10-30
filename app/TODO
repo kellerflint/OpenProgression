@@ -2,7 +2,7 @@ TODO:
 
 give_reqs:
 [DONE] give admin ability to give user reqs
-give badges on completion of last req item
+[DONE] give badges on completion of last req item
 
 remove_user:
 add remove a user option
