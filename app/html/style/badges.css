@@ -86,7 +86,6 @@ h3 {
 }
 
 .req-image {
-    vertical-align: middle;
     width: 25px;
     margin-right: 5px;
 }
@@ -94,8 +93,8 @@ h3 {
 .req-text {
     margin-left: 35px;
     display: block;
-    font-weight: 200;
-    font-size: 1.4em;
+    font-weight: 300;
+    font-size: 1.5em;
 }
 
 .req-link {
@@ -106,9 +105,6 @@ h3 {
 
 a:hover {
     text-decoration: none;
-}
-
-.req-title {
 }
 
 .hide {

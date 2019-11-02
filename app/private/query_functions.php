@@ -531,14 +531,13 @@ function find_badge_order_min($category_id)
 
 function create_req($badge_id, $name, $description, $link)
 {
-
     global $db;
 
     $max = find_req_order_max($badge_id)["max"] + 1;
     $query = "INSERT INTO Req VALUES (DEFAULT, ?, ?, ?, ?, ?);";
 
     $stmt = $db->prepare($query);
-    $stmt->bind_param("issii", $badge_id, $name, $description, $max, $link);
+    $stmt->bind_param("issis", $badge_id, $name, $description, $max, $link);
     $result = $stmt->execute();
     $stmt->close();
 }
