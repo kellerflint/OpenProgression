@@ -156,7 +156,7 @@ function add_req($req, $current_user)
     ">
         <label class="req-title" for="req-<?php echo $req["req_id"]; ?>"><?php echo $req['req_name']; ?></label>
         <p class="req-text"><?php echo $req['req_text']; ?></p>
-        <p class="req-link"><a href="<?php echo $req['req_link']; ?>">(link)</a></p>
+        <p class="req-link"><a href="<?php echo $req['req_link']; ?>" target="_blank">(link)</a></p>
     </div>
 <?php
 }

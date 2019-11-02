@@ -92,11 +92,23 @@ h3 {
 }
 
 .req-text {
-    display: inline-block;
+    margin-left: 35px;
+    display: block;
+    font-weight: 200;
+    font-size: 1.4em;
 }
 
 .req-link {
+    margin-left: 35px;
+    font-size: 2em;
     display: inline-block;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.req-title {
 }
 
 .hide {
