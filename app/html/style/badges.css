@@ -95,6 +95,10 @@ h3 {
     display: inline-block;
 }
 
+.req-link {
+    display: inline-block;
+}
+
 .hide {
     display: none;
 }

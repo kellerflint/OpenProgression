@@ -1,12 +1,19 @@
 TODO:
 
 BUGS:
-[DONE] changing order of badges and reqs when added from scratch fails
-[DONE] categories switch order with other session's categories
 blank edit form still appears even when no specific item is selected.
 
+
+security:
+bycrypt passwords and use hash to verify login, keep the text default password so if student loses default password it is visible to admins
+optional password change [owners and admins can't see this password if changed]
+option for admins to reset a user's password to the default password
+
 change_sessions:
-add and remove sessions
+add and remove sessions for owners (only people who paid, or signed up or whatever can create sessions, others can only be invited)
+add user_session_permissions
+add default session option
+(low priority) add invite code or something so someone who already has an account can join as a user or admin without having to create a new account
 
 profiles:
 compile requirements and make design decisions
@@ -20,6 +27,12 @@ leaderboard that links to profiles where everyone can see what other people have
 make searchable for completion of certain badges to ask for help?
 
 LOG:
+
+[DONE] reqs have the link to resources
+
+BUGS:
+[DONE] changing order of badges and reqs when added from scratch fails
+[DONE] categories switch order with other session's categories
 
 [MERGED] remove_user:
 [DONE] add remove a user option
