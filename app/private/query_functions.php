@@ -961,6 +961,20 @@ function remove_user_session_by_user($user_id)
     return $result;
 }
 
+function remove_user_session_by_session($session_id)
+{
+    global $db;
+
+    $query = "DELETE FROM User_Session WHERE session_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $session_id);
+    $result = $stmt->execute();
+    $stmt->close();
+
+    return $result;
+}
+
 function remove_user_by_id($user_id)
 {
     global $db;
@@ -975,13 +989,12 @@ function remove_user_by_id($user_id)
     return $result;
 }
 
-function create_session($user_id, $session_name, $session_text) {
+function create_session($user_id) {
     global $db;
 
-    $query = "INSERT INTO Session VALUES (DEFAULT, ?, ?);";
+    $query = "INSERT INTO Session VALUES (DEFAULT, 'New Session', 'Session Description');";
 
     $stmt = $db->prepare($query);
-    $stmt->bind_param("ss", $session_name, $session_text);
     $result = $stmt->execute();
     $stmt->close();
 
@@ -1009,4 +1022,26 @@ function update_session($session_id, $name, $description) {
     return $result;
 
     $stmt->close();
+}
+
+function remove_session($session_id)
+{
+    global $db;
+
+    // removing all badges from category
+    $category_set = find_session_categories($session_id);
+    while ($category = mysqli_fetch_assoc($category_set)) {
+        remove_category($category["category_id"]);
+    }
+
+    remove_user_session_by_session($session_id);
+
+    $query = "DELETE FROM Session WHERE session_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("i", $session_id);
+    $result = $stmt->execute();
+    $stmt->close();
+
+    return $result;
 }

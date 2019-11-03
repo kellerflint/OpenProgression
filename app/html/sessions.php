@@ -9,11 +9,11 @@ if (request_is_post()) {
         $_SESSION['session_id'] = $_POST['session_id'];
         redirect_to(url_for("/user/badges.php"));
     } else if ($_POST["create"] == "create") {
-        create_session($_SESSION["user_id"], $_POST["name"], $_POST["description"]);
+        create_session($_SESSION["user_id"]);
     } else if ($_POST["edit"] == "edit") {
         $edit_mode = $_POST["session_id"];
     } else if ($_POST["remove"] == "remove") {
-        echo "remove has not been implemented yet.";
+        remove_session($_POST["session_id"]);
     } else if ($_POST["update"] == "update") {
         update_session($_POST["session_id"], $_POST["name"], $_POST["description"]);
     }
