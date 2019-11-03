@@ -156,32 +156,32 @@ label {
 /* keyframes */
 
 @keyframes glow_gold {
-    0% { 
-        box-shadow: 0 0 5px #c4a300; 
+    0% {
+        box-shadow: 0 0 5px #c4a300;
     }
-    40% { 
-        box-shadow: 0 0 40px #c4a300; 
+    40% {
+        box-shadow: 0 0 40px #c4a300;
     }
-    60% { 
-        box-shadow: 0 0 40px #c4a300; 
+    60% {
+        box-shadow: 0 0 40px #c4a300;
     }
-    100% { 
-        box-shadow: 0 0 5px #c4a300; 
+    100% {
+        box-shadow: 0 0 5px #c4a300;
     }
 }
 
 @keyframes glow_dark {
-    0% { 
-        box-shadow: 0 0 5px #241e00; 
+    0% {
+        box-shadow: 0 0 5px #241e00;
     }
-    40% { 
-        box-shadow: 0 0 10px #241e00; 
+    40% {
+        box-shadow: 0 0 10px #241e00;
     }
-    60% { 
-        box-shadow: 0 0 10px #241e00; 
+    60% {
+        box-shadow: 0 0 10px #241e00;
     }
-    100% { 
-        box-shadow: 0 0 5px #241e00; 
+    100% {
+        box-shadow: 0 0 5px #241e00;
     }
 }
 

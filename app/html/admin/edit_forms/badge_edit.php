@@ -15,15 +15,18 @@
     <input type="hidden" name="badge_id" value="<?php echo $badge["badge_id"]; ?>">
     <div class="form-group">
         <label for="badge-name">Name</label>
-        <input type="text" class="form-control" id="badge-name" name="badge_name" value="<?php echo $badge["badge_name"]; ?>">
+        <input type="text" class="form-control" id="badge-name" name="badge_name"
+               value="<?php echo $badge["badge_name"]; ?>">
     </div>
     <div class="form-group">
         <label for="badge-description">Description</label>
-        <textarea class="form-control" id="badge-description" name="badge_description" rows="3"><?php echo $badge["badge_description"]; ?></textarea>
+        <textarea class="form-control" id="badge-description" name="badge_description"
+                  rows="3"><?php echo $badge["badge_description"]; ?></textarea>
     </div>
     <div class="form-group">
         <label for="badge-experience">Experience</label>
-        <input type="number" class="form-control" id="badge-experience" name="badge_experience" value="<?php echo $badge["badge_experience"]; ?>">
+        <input type="number" class="form-control" id="badge-experience" name="badge_experience"
+               value="<?php echo $badge["badge_experience"]; ?>">
     </div>
     <div class="form-group">
         <label for="select-category">Category</label>
@@ -44,7 +47,7 @@
         <select class="form-control" id="select-prereq" name="badge_prereq_id">
             <option value="NULL">No Prerequisite</option>
             <?php
-            $badge_set =  find_badges_by_session($_SESSION["session_id"]);
+            $badge_set = find_badges_by_session($_SESSION["session_id"]);
             while ($badge_item = mysqli_fetch_assoc($badge_set)) {
                 ?>
                 <option value="<?php echo $badge_item["badge_id"]; ?>" <?php if ($badge_item["badge_id"] == $badge["badge_prereq_id"]) echo "selected"; ?>>

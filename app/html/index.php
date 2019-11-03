@@ -23,20 +23,20 @@ if (request_is_post()) {
 include_once SHARED_PATH . '/default_header.php';
 ?>
 
-<div class="container">
-    <form action="index.php" method="POST">
-        <h2>Login</h2>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="input" class="form-control" id="username" name="username" placeholder="Username">
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-primary" value="login">Submit</button>
-        <?php echo display_errors($errors); ?>
-    </form>
-</div>
+    <div class="container">
+        <form action="index.php" method="POST">
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="input" class="form-control" id="username" name="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary" value="login">Submit</button>
+            <?php echo display_errors($errors); ?>
+        </form>
+    </div>
 
 <?php include_once SHARED_PATH . '/default_header.php'; ?>

@@ -31,7 +31,7 @@
         <label for="select-badge">Badge</label>
         <select class="form-control" id="select-badge" name="badge_id">
             <?php
-            $badge_set =  find_badges_by_session($_SESSION["session_id"]);
+            $badge_set = find_badges_by_session($_SESSION["session_id"]);
             while ($badge_item = mysqli_fetch_assoc($badge_set)) {
                 ?>
                 <option value="<?php echo $badge_item["badge_id"]; ?>" <?php if ($badge_item["badge_id"] == $req["badge_id"]) echo "selected"; ?>>

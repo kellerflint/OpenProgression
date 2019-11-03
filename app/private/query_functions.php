@@ -339,7 +339,6 @@ function add_user($user_nickname, $session_id)
         }
 
 
-
         $stmt->close();
     }
 }
@@ -770,7 +769,6 @@ function switch_badge_order($id1, $order1, $id2, $order2)
     $result = $stmt->execute();
     $stmt->close();
 }
-
 
 
 // moves req order up or down
