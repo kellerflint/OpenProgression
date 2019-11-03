@@ -332,7 +332,7 @@ function add_user($user_nickname, $session_id)
         $result = $stmt->execute();
 
         if ($result) {
-            add_user_session($new_id, $session_id, OWN);
+            add_user_session($new_id, $session_id, USR);
             return $new_id;
         } else {
             return -1;

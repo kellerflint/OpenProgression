@@ -5,8 +5,8 @@ blank edit form still appears even when no specific item is selected.
 (URGENT) in badges creates horizontal scroll rather than breaking into seperate lines
 
 change_sessions:
-add and remove sessions for owners (only people who paid (i.e. owners), or signed up or whatever can create sessions, others can only be invited)
-add user_session_permissions
+add <-[DONE] and remove sessions for owners (only people who paid (i.e. owners), or signed up or whatever can create sessions, others can only be invited)
+[DONE] add user_session_permissions
 add default session option
 (low priority) add invite code or something so someone who already has an account can join as a user or admin without having to create a new account
 
