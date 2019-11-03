@@ -20,6 +20,26 @@
     font-size: 1em;
 }
 
+.btn-success {
+    width: 10rem;
+    font-size: 1em;
+}
+
+.btn-danger {
+
+}
+
+input, textarea {
+    margin-bottom: 15px;
+}
+
+textarea {
+    width: 80%;
+}
+
+label {
+    font-weight: bold;
+}
 
 /*
 form {

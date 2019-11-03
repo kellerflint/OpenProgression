@@ -332,7 +332,7 @@ function add_user($user_nickname, $session_id)
         $result = $stmt->execute();
 
         if ($result) {
-            add_user_session($new_id, $session_id);
+            add_user_session($new_id, $session_id, OWN);
             return $new_id;
         } else {
             return -1;
@@ -344,14 +344,14 @@ function add_user($user_nickname, $session_id)
 }
 
 // Adds user to the session
-function add_user_session($user_id, $session_id)
+function add_user_session($user_id, $session_id, $permission)
 {
     global $db;
 
-    $query = "INSERT INTO User_Session VALUES (?, ?, 'user', NOW());";
+    $query = "INSERT INTO User_Session VALUES (?, ?, ?, NOW());";
 
     $stmt = $db->prepare($query);
-    $stmt->bind_param("ii", $user_id, $session_id);
+    $stmt->bind_param("iis", $user_id, $session_id, $permission);
     $result = $stmt->execute();
 
     return $result;
@@ -973,4 +973,24 @@ function remove_user_by_id($user_id)
     $stmt->close();
 
     return $result;
+}
+
+function create_session($user_id, $session_name, $session_text) {
+    global $db;
+
+    $query = "INSERT INTO Session VALUES (DEFAULT, ?, ?);";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("ss", $session_name, $session_text);
+    $result = $stmt->execute();
+    $stmt->close();
+
+    $query = "SELECT MAX(session_id) FROM Session;";
+
+    $stmt = $db->prepare($query);
+    $result = $stmt->execute();
+    $id = $stmt->get_result();
+    $stmt->close();
+
+    add_user_session($user_id, mysqli_fetch_assoc($id)["MAX(session_id)"], OWN);
 }

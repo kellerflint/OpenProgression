@@ -36,7 +36,7 @@
                         <a class="dropdown-item" href="<?php echo url_for('logout.php'); ?>">Logout</a>
                     </div>
                 </li>
-                <?php if ($_SESSION['permission'] == ADM) { ?>
+                <?php if ($_SESSION['permission'] == ADM || $_SESSION['permission'] == OWN) { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
