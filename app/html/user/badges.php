@@ -16,7 +16,7 @@ if (request_is_post()) {
 }
 
 
-if ($_SESSION["permission"] == ADM) {
+if ($_SESSION["permission"] == ADM || $_SESSION["permission"] == OWN) {
     ?>
     <form action="badges.php" method="POST" id="get-user">
         <label for="user-select">Select User</label>
@@ -55,7 +55,7 @@ if ($_SESSION["permission"] == ADM) {
 
 <div id="badges">
     <?php
-    if ($_SESSION["permission"] == ADM) {
+    if ($_SESSION["permission"] == ADM || $_SESSION["permission"] == OWN) {
         $badge_set = find_session_badges($_SESSION['session_id'], $current_user);
     } else {
         $badge_set = find_session_badges($_SESSION['session_id'], $_SESSION['user_id']);
@@ -98,13 +98,13 @@ function build_badge($badge, $current_user)
         <h2 class="badge-title"><?php echo $badge['badge_name']; ?></h2>
         <div class="reqs hide">
             <?php
-                if ($_SESSION["permission"] == ADM) {
+                if ($_SESSION["permission"] == ADM || $_SESSION["permission"] == OWN) {
                     $req_set = find_badge_reqs($current_user, $badge['badge_id']);
                 } else {
                     $req_set = find_badge_reqs($_SESSION['user_id'], $badge['badge_id']);
                 }
 
-                if ($_SESSION["permission"] == ADM) {
+                if ($_SESSION["permission"] == ADM || $_SESSION["permission"] == OWN) {
                     echo "<form action=\"badges.php\" method=\"POST\">";
                     echo "<input type=\"hidden\" name=\"badge_id\" value=\"{$badge["badge_id"]}\">";
                     echo "<input type=\"hidden\" name=\"user_id\" class=\"user-input-hidden\" value=\"$current_user\">";
@@ -112,7 +112,7 @@ function build_badge($badge, $current_user)
                 while ($req = mysqli_fetch_assoc($req_set)) {
                     add_req($req, $current_user);
                 }
-                if ($_SESSION["permission"] == ADM) {
+                if ($_SESSION["permission"] == ADM || $_SESSION["permission"] == OWN) {
                     echo "<button type=\"submit\" class=\"btn btn-primary\" name=\"update\" value=\"update\">Update</button>";
                     echo "</form>";
                 }
@@ -126,7 +126,7 @@ function add_req($req, $current_user)
 {
     ?>
     <div class="req">
-        <?php if ($_SESSION["permission"] == ADM) {
+        <?php if ($_SESSION["permission"] == ADM || $_SESSION["permission"] == OWN) {
                 if ($req['has_req'] == "true") {
                     ?>
                 <input class="form-check-input" type="checkbox" name="reqs[]" value="<?php echo $req["req_id"]; ?>" id="req-<?php echo $req["req_id"]; ?>" checked>
@@ -165,7 +165,7 @@ function add_req($req, $current_user)
 function has_prereq($badge, $current_user)
 {
     // TODO: $badge_set is null if I don't re-run the query? Find out why
-    if ($_SESSION["permission"] == ADM) {
+    if ($_SESSION["permission"] == ADM || $_SESSION["permission"] == OWN) {
         $badge_set = find_session_badges($_SESSION['session_id'], $current_user);
     } else {
         $badge_set = find_session_badges($_SESSION['session_id'], $_SESSION['user_id']);

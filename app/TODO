@@ -2,18 +2,21 @@ TODO:
 
 BUGS:
 blank edit form still appears even when no specific item is selected.
+(URGENT) in badges creates horizontal scroll rather than breaking into seperate lines
 
+change_sessions:
+add and remove sessions for owners (only people who paid (i.e. owners), or signed up or whatever can create sessions, others can only be invited)
+add user_session_permissions
+add default session option
+(low priority) add invite code or something so someone who already has an account can join as a user or admin without having to create a new account
 
 security:
 bycrypt passwords and use hash to verify login, keep the text default password so if student loses default password it is visible to admins
 optional password change [owners and admins can't see this password if changed]
 option for admins to reset a user's password to the default password
 
-change_sessions:
-add and remove sessions for owners (only people who paid, or signed up or whatever can create sessions, others can only be invited)
-add user_session_permissions
-add default session option
-(low priority) add invite code or something so someone who already has an account can join as a user or admin without having to create a new account
+badges:
+add progress bar to badges (all or just incomplete?) visible without clicking for how many reqs are completed
 
 profiles:
 compile requirements and make design decisions

@@ -2,6 +2,7 @@
 
 define("USR", "user");
 define("ADM", "admin");
+define("OWN", "owner");
 
 function log_in($user, $permission)
 {
@@ -30,6 +31,12 @@ function require_login()
 function require_permission($required)
 {
     require_login();
+
+    // owners have full access
+    if ($_SESSION['permission'] == OWN) {
+        return;
+    }
+
     if ($required != $_SESSION['permission']) {
         redirect_to(url_for("/index.php"));
     }
