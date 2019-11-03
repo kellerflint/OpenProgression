@@ -250,7 +250,7 @@ function find_user_sessions($user_id)
 {
     global $db;
 
-    $query = "SELECT user_id, Session.session_id, session_name, session_description FROM Session
+    $query = "SELECT user_id, Session.session_id, session_name, session_description, user_session_permission FROM Session
                 JOIN User_Session ON Session.session_id = User_Session.session_id
                 WHERE user_id = ?;";
 
@@ -993,4 +993,20 @@ function create_session($user_id, $session_name, $session_text) {
     $stmt->close();
 
     add_user_session($user_id, mysqli_fetch_assoc($id)["MAX(session_id)"], OWN);
+}
+
+function update_session($session_id, $name, $description) {
+    global $db;
+
+    $query = "UPDATE Session
+                SET session_name = ?, session_description = ?
+                WHERE session_id = ?;";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("ssi", $name,  $description, $session_id);
+    $result = $stmt->execute();
+
+    return $result;
+
+    $stmt->close();
 }

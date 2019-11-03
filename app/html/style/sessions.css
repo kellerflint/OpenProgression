@@ -15,7 +15,7 @@
     border-radius: 10px;
 }
 
-.btn-primary {
+.btn {
     width: 10rem;
     font-size: 1em;
 }
@@ -31,9 +31,6 @@
 
 input, textarea {
     margin-bottom: 15px;
-}
-
-textarea {
     width: 80%;
 }
 
