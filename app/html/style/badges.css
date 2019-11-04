@@ -40,6 +40,7 @@ body {
     display: inline-block;
     vertical-align: center;
     width: 250px;
+    white-space: initial;
 }
 
 .inactive {
@@ -77,6 +78,7 @@ h3 {
 
 /* Reqs */
 .reqs {
+    display:block;
     width: 95%;
     text-align: left;
 }
@@ -95,6 +97,8 @@ h3 {
     display: block;
     font-weight: 300;
     font-size: 1.5em;
+    width: 95%;
+    line-height: 2em;
 }
 
 .req-link {

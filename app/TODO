@@ -2,7 +2,6 @@ TODO:
 
 BUGS:
 blank edit form still appears even when no specific item is selected.
-(URGENT) in badges creates horizontal scroll rather than breaking into seperate lines
 
 change_sessions:
 add <-[DONE] and remove sessions for owners (only people who paid (i.e. owners), or signed up or whatever can create sessions, others can only be invited)
@@ -36,6 +35,7 @@ LOG:
 BUGS:
 [DONE] changing order of badges and reqs when added from scratch fails
 [DONE] categories switch order with other session's categories
+[DONE] in badges creates horizontal scroll rather than breaking into seperate lines
 
 [MERGED] remove_user:
 [DONE] add remove a user option
