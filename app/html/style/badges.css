@@ -79,7 +79,7 @@ h3 {
 /* Reqs */
 .reqs {
     display:block;
-    width: 95%;
+    width: 80%;
     text-align: left;
 }
 
@@ -95,9 +95,9 @@ h3 {
 .req-text {
     margin-left: 35px;
     display: block;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 1.5em;
-    width: 95%;
+    width: 100%;
     line-height: 2em;
 }
 
@@ -105,6 +105,10 @@ h3 {
     margin-left: 35px;
     font-size: 2em;
     display: inline-block;
+}
+
+.btn {
+    width: 100%;
 }
 
 a:hover {
