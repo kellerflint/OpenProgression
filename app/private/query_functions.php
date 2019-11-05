@@ -445,7 +445,7 @@ function create_category($name, $description, $session_id)
     $query = "INSERT INTO Category VALUES (DEFAULT, ?, ?, ?, ?);";
 
     $stmt = $db->prepare($query);
-    $stmt->bind_param("ssii", $name, $description, $session_id, $max);
+    $stmt->bind_param("ssii", $name, $description, $max, $session_id);
     $result = $stmt->execute();
     $stmt->close();
 }
