@@ -5,7 +5,7 @@ services:
     command:
       --default-authentication-plugin=mysql_native_password
     environment:
-      MYSQL_ROOT_PASSWORD: password #change on host
+      MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: OpenProgression
     volumes:
       - ..\storage\docker\OpenProgression-mysql-data:/var/lib/mysql
@@ -16,6 +16,6 @@ services:
     volumes:
       - ./app:/var/www/
     ports:
-      - 5001:80 #change to 80:80 on host
+      - 5001:80
     depends_on:
       - database
