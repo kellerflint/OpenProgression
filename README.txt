@@ -1,1 +1,1 @@
-
+Unlike existing K-12 learning management tools, I wanted to create a web application that was both more flexible for teachers and more interactive for students in self-directed learning environments. These environments might have many learning paths rather than a linear progression through the curriculum and so require a nonlinear LMS to manage effectively.
