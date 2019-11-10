@@ -4,7 +4,7 @@ BUGS:
 blank edit form still appears even when no specific item is selected.
 
 change_sessions:
-add <-[DONE] and remove sessions for owners (only people who paid (i.e. owners), or signed up or whatever can create sessions, others can only be invited)
+add <-[DONE] and remove sessions for owners [creator in user boolean] (only people who paid (i.e. owners), or signed up or whatever can create sessions, others can only be invited)
 [DONE] add user_session_permissions
 add default session option
 (low priority) add invite code or something so someone who already has an account can join as a user or admin without having to create a new account
@@ -28,9 +28,14 @@ leaderboard:
 leaderboard that links to profiles where everyone can see what other people have done
 make searchable for completion of certain badges to ask for help?
 
+Validation:
+An absolute fuckton of js and more importantly php validation
+
 LOG:
 
+Other Stuff:
 [DONE] reqs have the link to resources
+[DONE] show both user name and user nicknames. Sometimes one is clear and sometimes the other is, need both.
 
 BUGS:
 [DONE] changing order of badges and reqs when added from scratch fails
