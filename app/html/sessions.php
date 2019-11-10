@@ -64,7 +64,7 @@ include_once '../private/shared/default_header.php'; ?>
         <?php } ?>
         <?php
         // This is not a good solution, need to add a boolean for isOwner to user database but until then...
-        if ($_SESSION["permission"] == OWN) { ?>
+        if ($_SESSION["user_access"] == CREATOR) { ?>
             <form action="sessions.php" class="session border bg-light" method="POST">
                 <button type="submit" name="create" class="btn btn-success" value="create">Create Session</button>
             </form>

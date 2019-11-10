@@ -5,7 +5,7 @@ CREATE TABLE User
     user_nickname        varchar(255) NOT NULL,
     user_password        varchar(255) NOT NULL,
     user_hashed_password varchar(255) NOT NULL,
-    user_experience      int          NOT NULL,
+    user_access          varchar(255) NOT NULL,
 
     PRIMARY KEY (user_id)
 );

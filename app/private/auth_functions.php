@@ -4,6 +4,8 @@ define("USR", "user");
 define("ADM", "admin");
 define("OWN", "owner");
 
+define("CREATOR", "creator");
+
 function log_in($user, $permission)
 {
     session_regenerate_id();
@@ -11,6 +13,7 @@ function log_in($user, $permission)
     $_SESSION['last_login'] = time();
     $_SESSION['user_name'] = $user['user_name'];
     $_SESSION['permission'] = $permission;
+    $_SESSION['user_access'] = $user["user_access"];
     return true;
 }
 
