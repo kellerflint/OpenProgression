@@ -1,8 +1,6 @@
 TODO:
 
 BUGS:
-blank edit form still appears even when no specific item is selected.
-
 change_sessions:
 add <-[DONE] and remove sessions for owners [creator in user boolean] (only people who paid (i.e. owners), or signed up or whatever can create sessions, others can only be invited)
 [DONE] add user_session_permissions
@@ -31,16 +29,27 @@ make searchable for completion of certain badges to ask for help?
 Validation:
 An absolute fuckton of js and more importantly php validation
 
-LOG:
+
+
+LOG [Working Version 1.0.1]:
+
+Bugs:
+[DONE] blank edit form still appears even when no specific item is selected.
+
+Other Stuff:
+[DONE] show both user name and user nicknames. Sometimes one is clear and sometimes the other is, need both.
+
+
+
+LOG [Version 1.0.0]:
 
 Other Stuff:
 [DONE] reqs have the link to resources
-[DONE] show both user name and user nicknames. Sometimes one is clear and sometimes the other is, need both.
 
 BUGS:
 [DONE] changing order of badges and reqs when added from scratch fails
 [DONE] categories switch order with other session's categories
-[DONE] in badges creates horizontal scroll rather than breaking into seperate lines
+[DONE] in badges creates horizontal scroll rather than breaking into separate lines
 
 [MERGED] remove_user:
 [DONE] add remove a user option

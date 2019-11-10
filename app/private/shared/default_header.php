@@ -1,3 +1,8 @@
+<!--
+OpenProgression
+@author Keller Flint
+@version 1.0.1
+ -->
 <!doctype html>
 <html>
 
